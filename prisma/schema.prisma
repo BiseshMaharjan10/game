@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ArticleType {
+  news
+  opinion
+  investigation
+  alert
+}
+
+enum EventStatus {
+  available
+  accepted
+  completed
+  failed
+}
+
+model Player {
+  id           String         @id @default(cuid())
+  username     String         @unique
+  email        String         @unique
+  passwordHash String
+  money        Int            @default(1000)
+  trustScore   Int            @default(50)
+  subscribers  Int            @default(0)
+  companyValue Int            @default(1000)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  company      Company?
+  leaderboard  Leaderboard?
+  authSessions AuthSession[]
+  eventStates  PlayerEvent[]
+}
+
+model Company {
+  id         String      @id @default(cuid())
+  ownerId    String      @unique
+  name       String
+  level      Int         @default(1)
+  reputation Int         @default(50)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  owner      Player      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  journalists Journalist[]
+  articles   Article[]
+  events     PlayerEvent[]
+}
+
+model Journalist {
+  id        String   @id @default(cuid())
+  companyId String
+  name      String
+  skill     Int      @default(1)
+  salary    Int      @default(100)
+  loyalty   Int      @default(50)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  company   Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@index([companyId])
+}
+
+model Article {
+  id           String      @id @default(cuid())
+  companyId    String
+  title        String
+  type         ArticleType
+  quality      Int
+  verifiedInfo Boolean     @default(false)
+  isFakeNews   Boolean     @default(false)
+  publishedAt  DateTime    @default(now())
+  company      Company     @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@index([companyId])
+}
+
+model Event {
+  id           String        @id @default(cuid())
+  title        String
+  description  String
+  difficulty   Int
+  reward       Int
+  risk         Int
+  status       EventStatus   @default(available)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  playerStates PlayerEvent[]
+}
+
+model Leaderboard {
+  id        String   @id @default(cuid())
+  playerId  String   @unique
+  rank      Int      @default(0)
+  score     Int      @default(0)
+  updatedAt DateTime @updatedAt
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model AuthSession {
+  id               String   @id @default(cuid())
+  playerId         String
+  refreshTokenHash String
+  expiresAt        DateTime
+  revokedAt        DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  player           Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([playerId])
+}
+
+model PlayerEvent {
+  id        String      @id @default(cuid())
+  playerId  String
+  companyId String
+  eventId   String
+  status    EventStatus @default(accepted)
+  progress  Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  player    Player      @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  company   Company     @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  event     Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([playerId])
+  @@index([companyId])
+  @@index([eventId])
+}
