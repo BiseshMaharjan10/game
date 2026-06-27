@@ -18,6 +18,13 @@ const eventRepository = {
 	},
 	updateAssignment(id, data) {
 		return prisma.playerEvent.update({ where: { id }, data, include: { event: true, company: true } });
+	},
+	listPlayerEvents(playerId) {
+		return prisma.playerEvent.findMany({
+			where: { playerId },
+			include: { event: true, company: true },
+			orderBy: { createdAt: 'desc' }
+		});
 	}
 };
 

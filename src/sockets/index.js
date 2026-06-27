@@ -1,10 +1,11 @@
 const { Server } = require('socket.io');
-const { verifyAccessToken } = require('../utils/jwt');
 const { AppError } = require('../utils/appError');
 const { publishArticle } = require('../services/article.service');
 const { hireJournalist } = require('../services/journalist.service');
 const { acceptEvent } = require('../services/event.service');
 const { domainEvents } = require('../events');
+const { verifyFirebaseToken } = require('../config/firebase');
+const { prisma } = require('../config/prisma');
 
 let io = null;
 
@@ -36,18 +37,24 @@ function initSocket(server) {
 
   bindDomainEvents();
 
-  io.use((socket, next) => {
+  io.use(async (socket, next) => {
     try {
       const token = socket.handshake.auth?.token || socket.handshake.headers.authorization?.replace('Bearer ', '');
       if (!token) {
         throw new AppError('Unauthorized', 401);
       }
 
-      const payload = verifyAccessToken(token);
+      const decodedToken = await verifyFirebaseToken(token);
+      const player = await prisma.player.findUnique({ where: { firebaseUid: decodedToken.uid } });
+
+      if (!player) {
+        throw new AppError('Unauthorized', 401);
+      }
+
       socket.data.user = {
-        id: payload.sub,
-        username: payload.username,
-        email: payload.email
+        id: player.id,
+        username: player.username,
+        email: player.email
       };
       next();
     } catch (error) {

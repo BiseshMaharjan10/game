@@ -8,7 +8,8 @@ jest.mock('../src/middleware/auth', () => ({
 jest.mock('../src/services/company.service', () => ({
   getCompany: jest.fn().mockResolvedValue({ id: 'company-1', ownerId: 'player-1', name: 'Daily Byte', level: 1, reputation: 50 }),
   createCompany: jest.fn().mockResolvedValue({ id: 'company-1', ownerId: 'player-1', name: 'Daily Byte', level: 1, reputation: 50 }),
-  upgradeCompany: jest.fn().mockResolvedValue({ id: 'company-1', ownerId: 'player-1', name: 'Daily Byte', level: 2, reputation: 55 })
+  upgradeCompany: jest.fn().mockResolvedValue({ id: 'company-1', ownerId: 'player-1', name: 'Daily Byte', level: 2, reputation: 55 }),
+  syncPlayerCompanyValue: jest.fn().mockResolvedValue({ id: 'player-1', money: 1000, trustScore: 50 })
 }));
 
 const request = require('supertest');
@@ -20,18 +21,34 @@ describe('company routes', () => {
   test('fetches company', async () => {
     const response = await request(app).get('/company');
     expect(response.status).toBe(200);
-    expect(response.body.company.name).toBe('Daily Byte');
+    expect(response.body.name).toBe('Daily Byte');
+    expect(response.body.coins).toBeDefined();
+    expect(response.body.unlocked_desks).toBeDefined();
   });
 
   test('creates company', async () => {
     const response = await request(app).post('/company/create').send({ name: 'Daily Byte' });
     expect(response.status).toBe(201);
-    expect(response.body.company.level).toBe(1);
+    expect(response.body.name).toBe('Daily Byte');
+    expect(response.body.message).toBe('Company created');
   });
 
   test('upgrades company', async () => {
     const response = await request(app).post('/company/upgrade').send({});
     expect(response.status).toBe(200);
-    expect(response.body.company.level).toBe(2);
+    expect(response.body.message).toBe('Desk purchased');
+    expect(response.body.unlocked_desks).toBeDefined();
+  });
+});
+
+describe('system routes', () => {
+  const app = buildApp();
+
+  test('returns health contract', async () => {
+    const response = await request(app).get('/health');
+    expect(response.status).toBe(200);
+    expect(response.body.status).toBe('healthy');
+    expect(response.body.game).toBe('Press & Influence — Five Grayon');
+    expect(response.body.version).toBe('1.0.0');
   });
 });

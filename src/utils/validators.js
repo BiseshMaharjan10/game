@@ -15,10 +15,6 @@ function requireEmail(value) {
   return email.toLowerCase();
 }
 
-function requirePassword(value) {
-  return requireString(value, 'password', 8);
-}
-
 function requireInteger(value, fieldName, min = Number.NEGATIVE_INFINITY, max = Number.POSITIVE_INFINITY) {
   if (!Number.isInteger(value) || value < min || value > max) {
     throw new AppError(`${fieldName} must be an integer between ${min} and ${max}`, 400);
@@ -36,7 +32,6 @@ function requireBoolean(value, fieldName) {
 module.exports = {
   requireString,
   requireEmail,
-  requirePassword,
   requireInteger,
   requireBoolean
 };

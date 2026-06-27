@@ -30,4 +30,8 @@ async function getLeaderboard() {
   return leaderboardRepository.list();
 }
 
-module.exports = { rebuildLeaderboard, getLeaderboard };
+module.exports = {
+  rebuildLeaderboard,
+  recalculateLeaderboard: rebuildLeaderboard,  // alias used by all other services
+  getLeaderboard
+};

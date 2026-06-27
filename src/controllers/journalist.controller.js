@@ -1,14 +1,52 @@
 const { asyncHandler } = require('../utils/asyncHandler');
 const { listJournalists, hireJournalist, fireJournalist } = require('../services/journalist.service');
+const { playerRepository } = require('../modules/auth/auth.repository');
+const {
+  getJournalistListContractPayload,
+  getJournalistHireSuccessPayload,
+  getJournalistHireFailurePayload
+} = require('../utils/responseMappers');
 
 const listJournalistsHandler = asyncHandler(async (req, res) => {
+  // Real journalist rows from the DB — no longer discarded
   const journalists = await listJournalists(req.user.id);
-  res.json({ journalists });
+  res.json(getJournalistListContractPayload(journalists));
 });
 
 const hireJournalistHandler = asyncHandler(async (req, res) => {
-  const journalist = await hireJournalist(req.user.id, req.body);
-  res.status(201).json({ journalist });
+  // Determine salary from request body before the hire attempt so we can
+  // report the exact needed/have amounts on failure.
+  const salary = req.body.payment === 'diamond' ? 1000 : (req.body.salary || 600);
+
+  const payload = {
+    name:   req.body.character || req.body.name,
+    skill:  req.body.skill || 1,
+    salary
+  };
+
+  try {
+    // journalist = newly created Prisma row
+    const journalist = await hireJournalist(req.user.id, payload);
+
+    // Fetch updated player (money already deducted by service) and full journalist list
+    const playerAfter  = await playerRepository.findById(req.user.id);
+    const allJournalists = await listJournalists(req.user.id);
+
+    res.status(201).json(
+      getJournalistHireSuccessPayload(journalist, playerAfter, allJournalists, req.body)
+    );
+  } catch (error) {
+    if (error.message === 'insufficient funds') {
+      // Fetch player to report real "have" amount
+      const player = await playerRepository.findById(req.user.id);
+      const have = player ? player.money : null;
+      res.status(400).json(
+        getJournalistHireFailurePayload(req.body, salary, have)
+      );
+      return;
+    }
+    throw error;
+  }
 });
 
 const fireJournalistHandler = asyncHandler(async (req, res) => {

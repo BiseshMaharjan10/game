@@ -1,11 +1,15 @@
 const { prisma } = require('../../config/prisma');
 
 const playerRepository = {
-  findByEmailOrUsername(identifier) {
-    return prisma.player.findFirst({
-      where: {
-        OR: [{ email: identifier }, { username: identifier }]
-      },
+  findByFirebaseUid(firebaseUid) {
+    return prisma.player.findUnique({
+      where: { firebaseUid },
+      include: { company: true, leaderboard: true }
+    });
+  },
+  findByEmail(email) {
+    return prisma.player.findUnique({
+      where: { email },
       include: { company: true, leaderboard: true }
     });
   },
@@ -23,16 +27,4 @@ const playerRepository = {
   }
 };
 
-const authSessionRepository = {
-  create(data) {
-    return prisma.authSession.create({ data });
-  },
-  findByTokenHash(refreshTokenHash) {
-    return prisma.authSession.findFirst({ where: { refreshTokenHash } });
-  },
-  revoke(id) {
-    return prisma.authSession.update({ where: { id }, data: { revokedAt: new Date() } });
-  }
-};
-
-module.exports = { playerRepository, authSessionRepository };
+module.exports = { playerRepository };

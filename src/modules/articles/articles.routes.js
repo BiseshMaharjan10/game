@@ -5,7 +5,12 @@ const { publishArticleHandler, articleHistoryHandler } = require('../../controll
 
 const articleRouter = Router();
 
-articleRouter.post('/publish', authRequired, requireFields(['title', 'type', 'quality']), publishArticleHandler);
+articleRouter.post('/publish', authRequired, (req, _res, next) => {
+  if (!req.body?.strategy) {
+    return _res.status(400).json({ error: 'Missing fields: strategy' });
+  }
+  next();
+}, publishArticleHandler);
 articleRouter.get('/history', authRequired, articleHistoryHandler);
 
 module.exports = { articleRouter };

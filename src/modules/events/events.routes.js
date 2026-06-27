@@ -6,7 +6,7 @@ const { listEventsHandler, acceptEventHandler, completeEventHandler } = require(
 const eventRouter = Router();
 
 eventRouter.get('/', authRequired, listEventsHandler);
-eventRouter.post('/accept', authRequired, requireFields(['eventId']), acceptEventHandler);
-eventRouter.post('/complete', authRequired, requireFields(['eventId']), completeEventHandler);
+eventRouter.post('/accept', authRequired, acceptEventHandler);
+eventRouter.post('/complete', authRequired, completeEventHandler);
 
 module.exports = { eventRouter };

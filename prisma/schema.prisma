@@ -22,34 +22,35 @@ enum EventStatus {
 }
 
 model Player {
-  id           String         @id @default(cuid())
-  username     String         @unique
-  email        String         @unique
-  passwordHash String
-  money        Int            @default(1000)
-  trustScore   Int            @default(50)
-  subscribers  Int            @default(0)
-  companyValue Int            @default(1000)
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  company      Company?
-  leaderboard  Leaderboard?
-  authSessions AuthSession[]
-  eventStates  PlayerEvent[]
+  id             String        @id @default(cuid())
+  firebaseUid    String        @unique
+  username       String?       @unique
+  email          String        @unique
+  displayName    String?
+  profilePicture String?
+  money          Int           @default(1000)
+  trustScore     Int           @default(50)
+  subscribers    Int           @default(0)
+  companyValue   Int           @default(1000)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  company        Company?
+  leaderboard    Leaderboard?
+  eventStates    PlayerEvent[]
 }
 
 model Company {
-  id         String      @id @default(cuid())
-  ownerId    String      @unique
-  name       String
-  level      Int         @default(1)
-  reputation Int         @default(50)
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
-  owner      Player      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  id          String        @id @default(cuid())
+  ownerId     String        @unique
+  name        String
+  level       Int           @default(1)
+  reputation  Int           @default(50)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  owner       Player        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   journalists Journalist[]
-  articles   Article[]
-  events     PlayerEvent[]
+  articles    Article[]
+  events      PlayerEvent[]
 }
 
 model Journalist {
@@ -100,19 +101,6 @@ model Leaderboard {
   score     Int      @default(0)
   updatedAt DateTime @updatedAt
   player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
-}
-
-model AuthSession {
-  id               String   @id @default(cuid())
-  playerId         String
-  refreshTokenHash String
-  expiresAt        DateTime
-  revokedAt        DateTime?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  player           Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
-
-  @@index([playerId])
 }
 
 model PlayerEvent {

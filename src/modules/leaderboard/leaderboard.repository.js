@@ -7,13 +7,14 @@ const leaderboardRepository = {
 			include: {
 				player: {
 					select: {
-						id: true,
-						username: true,
-						email: true,
-						money: true,
-						trustScore: true,
-						subscribers: true,
-						companyValue: true
+						id:           true,
+						username:     true,
+						email:        true,
+						money:        true,
+						trustScore:   true,
+						subscribers:  true,
+						companyValue: true,
+						company:      true   // include company so mapper can use company.name as outlet name
 					}
 				}
 			}

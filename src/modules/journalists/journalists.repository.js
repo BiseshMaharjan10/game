@@ -12,6 +12,12 @@ const journalistRepository = {
 	},
 	delete(id) {
 		return prisma.journalist.delete({ where: { id } });
+	},
+	sumSalary(companyId) {
+		return prisma.journalist.aggregate({ where: { companyId }, _sum: { salary: true } });
+	},
+	countByCompany(companyId) {
+		return prisma.journalist.count({ where: { companyId } });
 	}
 };
 

@@ -22,7 +22,7 @@ function buildApp() {
   app.use(requestLimiter);
 
   app.get('/health', (_req, res) => {
-    res.json({ ok: true });
+    res.json(require('./utils/responseMappers').getHealthContractPayload());
   });
 
   app.use('/auth', authRouter);
