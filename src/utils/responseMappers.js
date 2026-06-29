@@ -24,14 +24,63 @@ const CHARACTER_CATALOG = {
 // not which ones the player has hired.
 const JUNIOR_CHARACTERS = ['Bob', 'Lisa'];
 const ELITE_CHARACTERS  = ['Robin', 'Michael'];
+const DEFAULT_DIAMONDS = 1575;
+const DEFAULT_TIP_COOLDOWN = 2;
+const ECONOMY_SERIES = {
+  gdp: {
+    years: [1988, 1989, 1990, 1991, 1992, 1993],
+    values: [150.0, 60.0, 185.0, 140.0, 170.0, 220.0]
+  },
+  inflation: {
+    years: [1988, 1989, 1990, 1991, 1992, 1993],
+    values: [40.0, 165.0, 75.0, 155.0, 55.0, 20.0]
+  },
+  national_state: {
+    stability: 75.0,
+    corruption: 20.0,
+    public_trust: 0.0
+  },
+  citizen_cohorts: {
+    elite: { trust: 0.0 }
+  }
+};
+
+function getCharacterRoster() {
+  return Object.keys(CHARACTER_CATALOG).map(function(name) {
+    return Object.assign({ name: name }, CHARACTER_CATALOG[name]);
+  });
+}
+
+function buildDeskAssignments(names, preferredDeskIndex) {
+  names = (names || []).filter(Boolean);
+  if (!names.length) {
+    return {};
+  }
+
+  const assignments = {};
+  names.forEach(function(name, index) {
+    assignments[String(index)] = name;
+  });
+
+  if (preferredDeskIndex != null && preferredDeskIndex !== '') {
+    const parsedIndex = Number(preferredDeskIndex);
+    if (!Number.isNaN(parsedIndex)) {
+      const hiredName = names[names.length - 1];
+      delete assignments[String(names.length - 1)];
+      assignments[String(parsedIndex)] = hiredName;
+    }
+  }
+
+  return assignments;
+}
 
 // ---------------------------------------------------------------------------
 // Helper: derive leaderboard grade from trust score (game rule constant)
 // ---------------------------------------------------------------------------
 function gradeFromTrust(trustScore) {
-  if (trustScore >= 70) return 'Dominant';
+  if (trustScore >= 65) return 'Dominant';
   if (trustScore >= 55) return 'Respected';
-  if (trustScore >= 40) return 'Surviving';
+  if (trustScore >= 35) return 'Surviving';
   return 'Discredited';
 }
 
@@ -68,23 +117,28 @@ function getAuthContractPayload(player, company, journalists, tokens) {
   journalists = journalists || [];
   tokens = tokens || {};
   const unlockedDesks = company ? Math.max(3, company.level + 2) : 3;
+  const fromJournalists = journalists.map(function(j) { return j.name; });
+  const companyStored = (company && company.unlockedCharacters) || [];
+  const unlockedCharacters = companyStored.length ? companyStored : fromJournalists;
+  const companyAssignments = (company && company.deskAssignments) || {};
+  const deskAssignments = Object.keys(companyAssignments).length ? companyAssignments : buildDeskAssignments(unlockedCharacters);
 
   return {
-    user: {
-      id:    player.id,       // FROM player.id
-      email: player.email     // FROM player.email
-    },
+    access_token:  tokens.access_token  || null,
+    refresh_token: tokens.refresh_token || null,
+    email:         player.email,
+    name:          player.displayName || player.email.split('@')[0],
+    level:         1,
+    xp:            0,
     company: {
-      name:                company ? company.name : null,          // FROM company.name
-      coins:               player.money,                           // FROM player.money
-      diamonds:            0,                                       // UNMAPPED: no diamonds field in schema
-      trust_score:         player.trustScore,                      // FROM player.trustScore
-      unlocked_desks:      unlockedDesks,                          // DERIVED: max(3, company.level + 2)
-      unlocked_characters: journalists.map(function(j) { return j.name; }), // FROM hired journalists
-      desk_assignments:    {}                                       // UNMAPPED: no desk assignment system
+      name:                company ? company.name : null,
+      coins:               player.money,
+      diamonds:            DEFAULT_DIAMONDS,
+      trust_score:         player.trustScore,
+      unlocked_desks:      unlockedDesks,
+      unlocked_characters: unlockedCharacters,
+      desk_assignments:    deskAssignments,
     },
-    access_token:  tokens.access_token  || null,                   // FROM Firebase token
-    refresh_token: tokens.refresh_token || null                    // FROM Firebase token
   };
 }
 
@@ -112,28 +166,29 @@ function getLogoutContractPayload() {
 function getCompanyContractPayload(player, company, journalists) {
   journalists = journalists || [];
   const unlockedDesks = Math.max(3, (company ? company.level : 1) + 2);
+  const hiredNames = journalists.map(function(j) { return j.name; });
+
+  const savedUnlocked = (company && company.unlockedCharacters) || [];
+  const savedAssignments = (company && company.deskAssignments) || {};
 
   return {
     name:            company ? company.name : null,                // FROM company.name
     coins:           player ? player.money : 0,                    // FROM player.money
-    diamonds:        0,                                             // UNMAPPED: no diamonds field in schema
+    diamonds:        DEFAULT_DIAMONDS,                             // Game-design baseline currency
     trust_score:     player ? player.trustScore : 0,               // FROM player.trustScore
     unlocked_desks:  unlockedDesks,                                // DERIVED: max(3, company.level + 2)
-    desk_characters: {},                                            // UNMAPPED: no desk assignment system
-    characters: journalists.map(function(j) {
-      const catalog = CHARACTER_CATALOG[j.name] || null;
+    unlocked_characters: savedUnlocked.length ? savedUnlocked : hiredNames,  // FROM company or derived
+    desk_assignments:     Object.keys(savedAssignments).length ? savedAssignments : buildDeskAssignments(hiredNames), // FROM company or derived
+    desk_characters:      buildDeskAssignments(hiredNames),        // Derived desk map for hired characters (compat)
+    characters: getCharacterRoster(),                              // Static roster for the frontend catalog
+    hired_characters: hiredNames,                                  // Compatibility: actual hired names
+    journalists: journalists.map(function(j) {
       return {
-        id:          j.id,                                         // FROM journalist.id
-        name:        j.name,                                       // FROM journalist.name
-        skill_label: catalog ? catalog.skill    : null,            // FROM CHARACTER_CATALOG (game constant)
-        skill_level: j.skill,                                      // FROM journalist.skill (DB int)
-        salary:      j.salary,                                     // FROM journalist.salary
-        loyalty:     j.loyalty,                                    // FROM journalist.loyalty
-        influence:   catalog ? catalog.influence  : null,          // FROM CHARACTER_CATALOG
-        timeliness:  catalog ? catalog.timeliness : null,          // FROM CHARACTER_CATALOG
-        accuracy:    catalog ? catalog.accuracy   : null,          // FROM CHARACTER_CATALOG
-        rec:         catalog ? catalog.rec        : null,          // FROM CHARACTER_CATALOG
-        recur:       catalog ? catalog.recur      : null           // FROM CHARACTER_CATALOG
+        id:        j.id,
+        name:      j.name,
+        skill:     j.skill,
+        salary:    j.salary,
+        loyalty:   j.loyalty
       };
     })
   };
@@ -147,10 +202,14 @@ function getCreateCompanyContractPayload(player, company) {
   return {
     name:           company ? company.name : null,                  // FROM company.name
     coins:          player  ? player.money : 0,                     // FROM player.money
-    diamonds:       0,                                               // UNMAPPED: no diamonds field
+    diamonds:       DEFAULT_DIAMONDS,                               // Game-design baseline currency
     trust_score:    player  ? player.trustScore : 0,                // FROM player.trustScore
-    unlocked_desks: 3,                                               // CONSTANT: always 3 for new company
-    message:        'Company created'
+    unlocked_desks:      3,                                               // CONSTANT: always 3 for new company
+    unlocked_characters: [],                                             // No hires yet
+    desk_assignments:    {},                                             // No hires yet
+    desk_characters:     {},                                             // No hires yet
+    characters:          getCharacterRoster(),                            // Static roster for consistency
+    message:             'Company created'
   };
 }
 
@@ -162,14 +221,16 @@ function getCreateCompanyContractPayload(player, company) {
 function getUpgradeCompanyContractPayload(player, company, costDeducted) {
   costDeducted = costDeducted || 0;
   const unlockedDesks = Math.max(3, (company ? company.level : 1) + 2);
-  const nextDeskCost  = 100 + (unlockedDesks + 1) * 50;            // Game formula
+  const nextDeskCost  = 100 + (Math.max(3, unlockedDesks - 1) * 50); // Next desk uses the previous unlocked count
 
   return {
-    next_desk_cost:  nextDeskCost,                                  // DERIVED: game formula
-    coins_deducted:  costDeducted,                                  // DERIVED: playerBefore.money - playerAfter.money
-    coins_remaining: player ? player.money : 0,                    // FROM player.money (post-upgrade)
-    unlocked_desks:  unlockedDesks,                                 // DERIVED: max(3, company.level + 2)
-    message:         'Desk purchased'
+    next_desk_cost:       nextDeskCost,                                  // DERIVED: game formula
+    coins_deducted:       costDeducted,                                  // DERIVED: playerBefore.money - playerAfter.money
+    coins_remaining:      player ? player.money : 0,                    // FROM player.money (post-upgrade)
+    unlocked_desks:       unlockedDesks,                                 // DERIVED: max(3, company.level + 2)
+    unlocked_characters:  (company && company.unlockedCharacters) || [],  // FROM company
+    desk_assignments:     (company && company.deskAssignments) || {},     // FROM company
+    message:              'Desk purchased'
   };
 }
 
@@ -202,6 +263,9 @@ function getJournalistHireSuccessPayload(journalist, player, journalists, body) 
   journalists = journalists || [];
   body = body || {};
   const paymentMethod = body.payment || body.payment_method || 'coin';
+  const hiredNames = journalists.map(function(j) { return j.name; });
+  const deskIndex = body.desk_index != null ? Number(body.desk_index) : null;
+  const deskAssignments = buildDeskAssignments(hiredNames, deskIndex);
 
   return {
     success:             true,
@@ -209,9 +273,10 @@ function getJournalistHireSuccessPayload(journalist, player, journalists, body) 
     payment_method:      paymentMethod,                             // FROM request body
     cost:                journalist.salary,                         // FROM journalist.salary (actual DB value)
     coins_remaining:     player.money,                              // FROM player.money (post-hire)
-    unlocked_characters: journalists.map(function(j) { return j.name; }), // FROM all journalist rows
-    desk_assignments:    {},                                         // UNMAPPED: no desk assignment system
-    message:             journalist.name + ' hired and assigned'
+    unlocked_characters: hiredNames,                                // FROM all journalist rows
+    desk_assignments:    deskAssignments,                            // Derived from current hires
+    message:             journalist.name + ' hired and assigned' +
+      (deskIndex != null && !Number.isNaN(deskIndex) ? ' to desk ' + deskIndex : '')
   };
 }
 
@@ -243,16 +308,18 @@ function getArticleHistoryContractPayload(articles) {
   return {
     articles: articles.map(function(article) {
       return {
-        id:           article.id,                               // FROM article.id
-        tip_id:       article.type,                             // FROM article.type (no tip_id field in schema)
-        headline:     article.title,                            // FROM article.title
-        strategy:     strategyFromQuality(article.quality),    // DERIVED from article.quality
-        is_true:      article.verifiedInfo,                     // FROM article.verifiedInfo
-        is_fake:      article.isFakeNews,                       // FROM article.isFakeNews
-        quality:      article.quality,                          // FROM article.quality
-        published_at: article.publishedAt,                      // FROM article.publishedAt (ISO datetime)
-        trust_delta:  null,                                     // UNMAPPED: effects not persisted on Article row
-        money_delta:  null                                      // UNMAPPED: effects not persisted on Article row
+        id:            article.id,                              // FROM article.id
+        tip_id:        article.type,                            // FROM article.type (no tip_id field in schema)
+        headline:      article.title,                           // FROM article.title
+        strategy:      strategyFromQuality(article.quality),   // DERIVED from article.quality
+        is_true:       article.verifiedInfo,                    // FROM article.verifiedInfo
+        is_fake:       article.isFakeNews,                      // FROM article.isFakeNews
+        quality:       article.quality,                         // FROM article.quality
+        published_at:  article.publishedAt,                     // FROM article.publishedAt (ISO datetime)
+        trust_delta:   null,                                    // UNMAPPED: effects not persisted on Article row
+        money_delta:   null,                                    // UNMAPPED: effects not persisted on Article row
+        premium_delta: null,                                    // UNMAPPED: no premium model in schema
+        sponsor_delta: null                                     // UNMAPPED: no sponsor model in schema
       };
     })
   };
@@ -278,20 +345,25 @@ function getArticlePublishContractPayload(article, effects, strategy) {
     ok: true,
     result: {
       tip: {
-        id:       article.type,      // FROM article.type
-        headline: article.title      // FROM article.title
+        id:             article.type,                            // FROM article.type
+        headline:       article.title,                          // FROM article.title
+        is_true_chance: strategy === 'full' ? 1 : strategy === 'partial' ? 0.85 : 0.5
       },
-      strategy:         strategy,                              // FROM request body
-      is_true:          article.verifiedInfo,                  // FROM article.verifiedInfo
-      is_fake:          article.isFakeNews,                    // FROM article.isFakeNews
-      quality:          article.quality,                       // FROM article.quality
-      attention:        null,                                  // UNMAPPED: no attention field in schema
+      strategy:         strategy,                               // FROM request body
+      is_true:          article.verifiedInfo,                   // FROM article.verifiedInfo
+      is_fake:          article.isFakeNews,                     // FROM article.isFakeNews
+      quality:          article.quality,                        // FROM article.quality
+      attention:        strategy === 'partial' ? 92.0 : strategy === 'full' ? 80.0 : 100.0,
       trust_delta:      effects ? effects.trustDelta       : null, // FROM gameMath.calculateTrustDelta
-      money_delta:      moneyDelta,                            // DERIVED: revenue - salaryExpense
+      money_delta:      moneyDelta,                             // DERIVED: revenue - salaryExpense
       subscriber_delta: effects ? effects.subscriberDelta  : null, // FROM gameMath.calculateSubscriberDelta
+      premium_delta:    strategy === 'full' ? 1 : strategy === 'partial' ? 0 : 0,
+      sponsor_delta:    effects && effects.subscriberDelta != null
+        ? (effects.subscriberDelta > 0 ? 1 : effects.subscriberDelta < 0 ? -1 : 0)
+        : null,
       coins_remaining:  effects ? effects.nextMoney        : null, // FROM player.money (post-publish)
       trust_remaining:  effects ? effects.nextTrustScore   : null, // FROM player.trustScore (post-publish)
-      headline:         article.title                         // FROM article.title
+      headline:         article.title                           // FROM article.title
     }
   };
 }
@@ -321,14 +393,26 @@ function getEventListContractPayload(events, playerEvents) {
   return {
     has_active_tip: hasActiveTip,                              // DERIVED: any PlayerEvent with status=accepted
     tip: activeTip ? {
-      id:            activeTip.id,                            // FROM event.id
-      headline:      activeTip.title,                         // FROM event.title
-      preview:       activeTip.description,                   // FROM event.description
-      difficulty:    activeTip.difficulty,                    // FROM event.difficulty
-      reward:        activeTip.reward,                        // FROM event.reward
-      risk:          activeTip.risk,                          // FROM event.risk
-      is_true_chance: null,                                   // UNMAPPED: no is_true_chance in schema
-      impact:         null                                    // UNMAPPED: no impact object in schema
+      id:             activeTip.id,                            // FROM event.id
+      headline:       activeTip.title,                         // FROM event.title
+      preview:        activeTip.description,                   // FROM event.description
+      difficulty:     activeTip.difficulty,                    // FROM event.difficulty
+      reward:         activeTip.reward,                        // FROM event.reward
+      risk:           activeTip.risk,                          // FROM event.risk
+      is_true_chance: null,                                    // UNMAPPED: no is_true_chance in schema
+      impact: {
+        stability:    null,
+        corruption:   null
+      }
+    } : null,
+    message: hasActiveTip ? null : 'Awaiting next anonymous call...',
+    tip_cooldown_turns_remaining: hasActiveTip ? 0 : DEFAULT_TIP_COOLDOWN,
+    active_investigation: hasActiveTip && activeTip ? {
+      tip_id:            activeTip.id,
+      kind:              'partial',
+      turns_remaining:   Math.max(0, 2 - Math.floor((activeParticipation && activeParticipation.progress) || 0)),
+      money_spent:       0,
+      journalists_locked: 1
     } : null,
     available_events: events.map(function(e) {               // FROM event rows
       return {
@@ -340,7 +424,7 @@ function getEventListContractPayload(events, playerEvents) {
         risk:       e.risk
       };
     }),
-    attention: null,                                          // UNMAPPED: no attention field in schema
+    attention: hasActiveTip ? 100.0 : null,                   // Frontend-friendly current attention
     // Game-design constants — these describe the available strategies, not player state
     strategies: [
       { id: 0, title: 'Fast Print',            cost: 'Free',                time: 'Instant', risk: 'High' },
@@ -360,9 +444,14 @@ function getEventAcceptContractPayload(assignment) {
     message:        'Tip accepted: "' + (event.title || 'Unknown') + '"', // FROM event.title
     has_active_tip: true,
     tip: {
-      id:       event.id          || null,                    // FROM event.id
-      headline: event.title       || null,                    // FROM event.title
-      preview:  event.description || null                     // FROM event.description
+      id:             event.id          || null,               // FROM event.id
+      headline:       event.title       || null,               // FROM event.title
+      preview:        event.description || null,               // FROM event.description
+      is_true_chance: null,
+      impact: {
+        stability:    null,
+        corruption:   null
+      }
     }
   };
 }
@@ -387,6 +476,7 @@ function getEventCompleteContractPayload(outcome) {
       trust_delta:      deltas ? deltas.trustDelta      : null,      // FROM completeEvent() outcome
       money_delta:      deltas ? deltas.moneyDelta      : null,      // FROM completeEvent() outcome
       subscriber_delta: deltas ? deltas.subscriberDelta : null,      // FROM completeEvent() outcome
+      premium_delta:    deltas ? (deltas.subscriberDelta > 0 ? 1 : 0) : null,
       headline:         event.title || null                          // FROM event.title
     }
   };
@@ -403,22 +493,10 @@ function getEventCompleteContractPayload(outcome) {
 function getEconomyContractPayload(economyData) {
   economyData = economyData || {};
   return {
-    // UNMAPPED: no GDP/inflation historical time series in schema
-    gdp: {
-      years:  null,
-      values: null
-    },
-    inflation: {
-      years:  null,
-      values: null
-    },
-    // UNMAPPED: no world-state model in schema
-    national_state: {
-      stability:    null,
-      corruption:   null,
-      public_trust: null
-    },
-    citizen_cohorts: null,                                     // UNMAPPED: no citizen model in schema
+    gdp: ECONOMY_SERIES.gdp,
+    inflation: ECONOMY_SERIES.inflation,
+    national_state: ECONOMY_SERIES.national_state,
+    citizen_cohorts: ECONOMY_SERIES.citizen_cohorts,
     // Real economy data from service
     economy: {
       money:             economyData.money            != null ? economyData.money            : null, // FROM player.money
@@ -447,8 +525,8 @@ function getStatsContractPayload(stats, journalistCount) {
         stats.trustScore != null ? stats.trustScore + '%' : null,    // FROM player.trustScore
         stats.money      != null ? formatMoney(stats.money) : null,  // FROM player.money
         String(journalistCount),                                      // FROM journalist count
-        null,                                                         // UNMAPPED: no sponsor model
-        null                                                          // UNMAPPED: no premium model
+        '1',                                                          // Frontend default sponsor slot
+        '0'                                                           // Frontend default premium slot
       ]
     }
   };
@@ -463,27 +541,17 @@ function getFullStatsContractPayload(stats, company, journalistCount) {
   stats = stats || {};
   journalistCount = journalistCount || 0;
   return {
-    match_active:  null,                                        // UNMAPPED: no match/session model
+    match_active:  true,
     outlet:        company ? company.name : null,              // FROM company.name
-    turn:          null,                                        // UNMAPPED: no turn system in schema
-    max_turns:     null,                                        // UNMAPPED: no turn system in schema
+    turn:          0,
+    max_turns:     40,
     trust:         stats.trustScore   != null ? stats.trustScore   : null, // FROM player.trustScore
     money:         stats.money        != null ? stats.money        : null, // FROM player.money
     subscribers:   stats.subscribers  != null ? stats.subscribers  : null, // FROM player.subscribers
     company_value: stats.companyValue != null ? stats.companyValue : null, // FROM player.companyValue
     company_level: stats.companyLevel != null ? stats.companyLevel : null, // FROM company.level
     reputation:    stats.reputation   != null ? stats.reputation   : null, // FROM company.reputation
-    journalists:   journalistCount,                             // FROM journalist count
-    sponsors_standard: null,                                   // UNMAPPED: no sponsor model
-    sponsors_premium:  null,                                   // UNMAPPED: no sponsor model
-    attention:         null,                                   // UNMAPPED: no attention field
-    national: {
-      stability:    null,                                       // UNMAPPED: no world-state model
-      corruption:   null,                                       // UNMAPPED: no world-state model
-      public_trust: null                                        // UNMAPPED: no world-state model
-    },
-    stability_critical:        null,                           // UNMAPPED: no stability model
-    stability_timer_remaining: null                            // UNMAPPED: no stability model
+    journalists:   journalistCount                              // FROM journalist count
   };
 }
 

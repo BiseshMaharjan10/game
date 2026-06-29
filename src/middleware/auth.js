@@ -1,21 +1,21 @@
 const { AppError } = require('../utils/appError');
 const { prisma } = require('../config/prisma');
-const { verifyFirebaseToken } = require('../config/firebase');
+const { verifyAccessToken } = require('../config/jwt');
 
 async function authRequired(req, res, next) {
   const header = req.headers.authorization || '';
-  const idToken = header.startsWith('Bearer ') ? header.slice(7) : null;
+  const token = header.startsWith('Bearer ') ? header.slice(7) : null;
 
-  if (!idToken) {
-    return res.status(401).json({ error: 'Missing Firebase ID token' });
+  if (!token) {
+    return res.status(401).json({ error: 'Missing authorization token' });
   }
 
   try {
-    const decodedToken = await verifyFirebaseToken(idToken);
+    const decoded = verifyAccessToken(token);
 
     const player = await prisma.player.findUnique({
-      where: { firebaseUid: decodedToken.uid },
-      include: { company: true }
+      where: { id: decoded.id },
+      include: { company: true },
     });
 
     if (!player) {
@@ -23,10 +23,10 @@ async function authRequired(req, res, next) {
     }
 
     req.user = player;
-    req.auth = decodedToken;
+    req.auth = decoded;
     return next();
   } catch (error) {
-    return res.status(401).json({ error: error.message || 'Invalid or expired Firebase token' });
+    return res.status(401).json({ error: error.message || 'Invalid or expired token' });
   }
 }
 

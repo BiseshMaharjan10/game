@@ -1,0 +1,1736 @@
+[2026-06-29T05:12:57.650Z] [INFO ] [src\utils\logger.js:132] --> GET /company { reqId: '8n2k5izq', query: undefined, body: undefined }
+[2026-06-29T05:12:57.658Z] [INFO ] [src\utils\logger.js:142] <-- GET /company 401 9ms 23b { reqId: '8n2k5izq', body: { error: 'jwt expired' } }
+[2026-06-29T05:12:57.797Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'kixp5a0g',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:12:57.801Z] [INFO ] [src\utils\logger.js:132] --> GET /company { reqId: 'kin352np', query: undefined, body: undefined }
+[2026-06-29T05:12:57.804Z] [INFO ] [src\utils\logger.js:142] <-- GET /company 401 3ms 23b { reqId: 'kin352np', body: { error: 'jwt expired' } }
+[2026-06-29T05:12:57.899Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'zxduryvt',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:12:57.916Z] [INFO ] [src\utils\logger.js:132] --> GET /company { reqId: '6d631ags', query: undefined, body: undefined }
+[2026-06-29T05:12:57.917Z] [INFO ] [src\utils\logger.js:142] <-- GET /company 401 2ms 23b { reqId: '6d631ags', body: { error: 'jwt expired' } }
+[2026-06-29T05:12:58.016Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '5sxh7136',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:12:58.033Z] [INFO ] [src\utils\logger.js:132] --> GET /company { reqId: 'f3omel9s', query: undefined, body: undefined }
+[2026-06-29T05:12:58.034Z] [INFO ] [src\utils\logger.js:142] <-- GET /company 401 2ms 23b { reqId: 'f3omel9s', body: { error: 'jwt expired' } }
+[2026-06-29T05:12:58.211Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '9aol7rsf',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:02.757Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '5sxh7136',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:02.758Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 4742ms 40b { reqId: '5sxh7136', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:02.850Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '3gsj92gd',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:02.989Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'kixp5a0g',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:02.990Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 5194ms 40b { reqId: 'kixp5a0g', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:02.992Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '9aol7rsf',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:02.993Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 4783ms 40b { reqId: '9aol7rsf', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.081Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'swowq688',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.085Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '6r35i96i',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.095Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '3gsj92gd',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.097Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 246ms 40b { reqId: '3gsj92gd', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.100Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'zxduryvt',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.101Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 5202ms 40b { reqId: 'zxduryvt', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.197Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'g2cdakcm',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.200Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'h5w0moxu',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.397Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '6r35i96i',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.398Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 312ms 40b { reqId: '6r35i96i', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.399Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'swowq688',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.400Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 319ms 40b { reqId: 'swowq688', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.436Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'h5w0moxu',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.437Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 237ms 40b { reqId: 'h5w0moxu', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.498Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '69kkr3zd',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.501Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '72naax1h',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.532Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '9eufrsnc',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.558Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'g2cdakcm',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.559Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 362ms 40b { reqId: 'g2cdakcm', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.647Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'd0xx3ma2',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.776Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '69kkr3zd',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.778Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 279ms 40b { reqId: '69kkr3zd', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.779Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '72naax1h',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.779Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 278ms 40b { reqId: '72naax1h', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.864Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'qt7st66k',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.866Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'ds2ktpag',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:03.885Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '9eufrsnc',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.886Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 354ms 40b { reqId: '9eufrsnc', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.975Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'd0xx3ma2',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:03.976Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 329ms 40b { reqId: 'd0xx3ma2', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:03.982Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'p0to8vwx',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.063Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'k1wkavr1',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.345Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'k1wkavr1',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:04.346Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 283ms 40b { reqId: 'k1wkavr1', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:04.348Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'qt7st66k',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:04.348Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 485ms 40b { reqId: 'qt7st66k', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:04.349Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'p0to8vwx',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:04.350Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 368ms 40b { reqId: 'p0to8vwx', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:04.351Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'ds2ktpag',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:04.351Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 485ms 40b { reqId: 'ds2ktpag', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:04.447Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '8dr22z97',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.448Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'obu596nq',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.450Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '1llnirej',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.451Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '5eer2obc',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.725Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '8dr22z97',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:04.730Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 283ms 40b { reqId: '8dr22z97', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:04.735Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '1llnirej',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:04.736Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 286ms 40b { reqId: '1llnirej', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:04.737Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'obu596nq',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:04.738Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 290ms 40b { reqId: 'obu596nq', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:04.739Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '5eer2obc',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:04.740Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 289ms 40b { reqId: '5eer2obc', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:04.833Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'n58vacee',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.840Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'f89gzxrs',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.927Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '5r2muyhw',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:04.964Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'toz49q9f',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:05.148Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'n58vacee',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:05.201Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 369ms 40b { reqId: 'n58vacee', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:05.296Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'ipxj04rr',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:05.361Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'toz49q9f',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:05.361Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 397ms 40b { reqId: 'toz49q9f', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:05.363Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '5r2muyhw',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:05.363Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 437ms 40b { reqId: '5r2muyhw', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:05.364Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'f89gzxrs',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:05.366Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 526ms 40b { reqId: 'f89gzxrs', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:05.462Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '6942ckyo',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:05.465Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '2jeocy25',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:05.467Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'fxfagb8t',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:05.614Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'ipxj04rr',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:05.619Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 323ms 40b { reqId: 'ipxj04rr', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:05.712Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'n95s20ov',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:05.856Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '6942ckyo',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:05.857Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 395ms 40b { reqId: '6942ckyo', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:05.858Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '2jeocy25',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:05.859Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 395ms 40b { reqId: '2jeocy25', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:05.860Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'fxfagb8t',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:05.862Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 395ms 40b { reqId: 'fxfagb8t', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:05.946Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'gc2pbx9g',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:05.948Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 's1qfrvwv',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:05.962Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'uvdq7wk7',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:06.154Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'n95s20ov',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:06.155Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 442ms 40b { reqId: 'n95s20ov', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:06.247Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'bh9rcmbb',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:06.313Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'gc2pbx9g',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:06.313Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 367ms 40b { reqId: 'gc2pbx9g', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:06.314Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 's1qfrvwv',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:06.315Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 367ms 40b { reqId: 's1qfrvwv', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:06.315Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'uvdq7wk7',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:06.316Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 354ms 40b { reqId: 'uvdq7wk7', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:06.412Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'f78ahckn',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:06.416Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '5j6hd951',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:06.419Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '3ezn1jji',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:06.675Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'bh9rcmbb',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:06.676Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 429ms 40b { reqId: 'bh9rcmbb', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:06.700Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '5j6hd951',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:06.701Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 285ms 40b { reqId: '5j6hd951', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:06.703Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '3ezn1jji',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:06.703Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 285ms 40b { reqId: '3ezn1jji', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:06.704Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'f78ahckn',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:06.705Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 293ms 40b { reqId: 'f78ahckn', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:06.781Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '4ewtplsa',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:06.798Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'mrclligm',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:06.803Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'vb19hsn7',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:06.809Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'swl4lf7o',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:07.189Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '4ewtplsa',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:07.190Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 409ms 40b { reqId: '4ewtplsa', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:07.191Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'mrclligm',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:07.191Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 393ms 40b { reqId: 'mrclligm', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:07.278Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'nld22u82',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:07.281Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '4kisjlns',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:07.398Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'vb19hsn7',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:07.399Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 597ms 40b { reqId: 'vb19hsn7', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:07.400Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'swl4lf7o',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:07.401Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 592ms 40b { reqId: 'swl4lf7o', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:07.770Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'anme3zro',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:07.772Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '3nc4o200',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:09.142Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'nld22u82',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:09.144Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 1865ms 40b { reqId: 'nld22u82', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:09.244Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'hr0vwxnk',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:09.335Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '4kisjlns',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:09.335Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 2054ms 40b { reqId: '4kisjlns', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:09.428Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '83ppa37s',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:10.659Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '3nc4o200',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:10.660Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 2888ms 40b { reqId: '3nc4o200', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:10.663Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'hr0vwxnk',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:10.664Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 1420ms 40b { reqId: 'hr0vwxnk', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:10.666Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '83ppa37s',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:10.667Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 1239ms 40b { reqId: '83ppa37s', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:10.669Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'anme3zro',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:10.670Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 2900ms 40b { reqId: 'anme3zro', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:10.761Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'zuqnuuox',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:10.764Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '6oz987x4',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:10.766Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'rj2gabyd',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:10.769Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'd597icqn',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:11.147Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'rj2gabyd',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:11.148Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 382ms 40b { reqId: 'rj2gabyd', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:11.243Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'vp4iwys1',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:11.322Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '6oz987x4',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:11.323Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 560ms 40b { reqId: '6oz987x4', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:11.326Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'd597icqn',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:11.330Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 560ms 40b { reqId: 'd597icqn', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:11.335Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'zuqnuuox',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:11.337Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 575ms 40b { reqId: 'zuqnuuox', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:11.411Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'l80im54c',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:11.429Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '4wvd7d3v',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:11.432Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'pdpvepvc',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:11.663Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'vp4iwys1',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:11.665Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 421ms 40b { reqId: 'vp4iwys1', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:11.704Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'pdpvepvc',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:11.705Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 273ms 40b { reqId: 'pdpvepvc', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:11.707Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '4wvd7d3v',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:11.707Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 278ms 40b { reqId: '4wvd7d3v', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:11.709Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'l80im54c',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:11.714Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 303ms 40b { reqId: 'l80im54c', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:11.761Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'pm1eso4u',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:11.795Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '6g4z5rlx',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:11.798Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'u73vbdw0',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:11.810Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'wfpwb863',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:12.112Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '6g4z5rlx',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:12.113Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 317ms 40b { reqId: '6g4z5rlx', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:12.114Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'u73vbdw0',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:12.114Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 317ms 40b { reqId: 'u73vbdw0', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:12.114Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'wfpwb863',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:12.115Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 305ms 40b { reqId: 'wfpwb863', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:12.115Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'pm1eso4u',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:12.115Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 354ms 40b { reqId: 'pm1eso4u', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:12.210Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'tpazt7s9',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:12.216Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'r39yb8l8',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:12.217Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '72hivwt6',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:12.220Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '0ko7t6si',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:12.598Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'r39yb8l8',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:12.656Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 435ms 40b { reqId: 'r39yb8l8', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:12.712Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'tpazt7s9',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:12.742Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 532ms 40b { reqId: 'tpazt7s9', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:12.753Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '72hivwt6',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:12.757Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 540ms 40b { reqId: '72hivwt6', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:12.764Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '0ko7t6si',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:12.767Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 547ms 40b { reqId: '0ko7t6si', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:12.811Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '8ilyzmau',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:12.844Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'nvlmtebm',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:12.860Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '0y9h75s2',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:12.864Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'kgis1k87',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:13.221Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '8ilyzmau',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:13.273Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 462ms 40b { reqId: '8ilyzmau', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:13.282Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'kgis1k87',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:13.287Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 423ms 40b { reqId: 'kgis1k87', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:13.293Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'nvlmtebm',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:13.296Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 452ms 40b { reqId: 'nvlmtebm', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:13.300Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '0y9h75s2',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:13.305Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 445ms 40b { reqId: '0y9h75s2', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:13.376Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'ogsiivhn',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:13.382Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'e65ad583',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:13.393Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'arm3hnqr',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:13.410Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'gn4btoln',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:13.937Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'e65ad583',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:13.995Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 614ms 40b { reqId: 'e65ad583', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.004Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'arm3hnqr',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.017Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 623ms 40b { reqId: 'arm3hnqr', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.028Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'ogsiivhn',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.034Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 658ms 40b { reqId: 'ogsiivhn', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.039Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'gn4btoln',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.045Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 634ms 40b { reqId: 'gn4btoln', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.093Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'qvt3ksfu',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:14.126Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'ye3t80ui',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:14.128Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'jk46krz3',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:14.143Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'uu93m7c7',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:14.528Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'jk46krz3',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.564Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 435ms 40b { reqId: 'jk46krz3', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.569Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'qvt3ksfu',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.571Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 477ms 40b { reqId: 'qvt3ksfu', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.572Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'ye3t80ui',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.573Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 447ms 40b { reqId: 'ye3t80ui', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.577Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'uu93m7c7',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.579Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 437ms 40b { reqId: 'uu93m7c7', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.660Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '0qrrsrkn',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:14.664Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'ea8l0ufq',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:14.666Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '84jq3fct',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:14.688Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'noyksccb',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:14.913Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '0qrrsrkn',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.914Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 253ms 40b { reqId: '0qrrsrkn', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.915Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'ea8l0ufq',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.916Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 252ms 40b { reqId: 'ea8l0ufq', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.976Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'noyksccb',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.977Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 289ms 40b { reqId: 'noyksccb', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:14.979Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '84jq3fct',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:14.980Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 313ms 40b { reqId: '84jq3fct', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:15.010Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '57acwlg1',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.012Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '6gqlbrni',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.076Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'bc3qt26f',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.078Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'kilasziq',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.350Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '57acwlg1',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:15.422Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 412ms 40b { reqId: '57acwlg1', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:15.442Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '6gqlbrni',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:15.446Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 434ms 40b { reqId: '6gqlbrni', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:15.453Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'kilasziq',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:15.461Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 379ms 40b { reqId: 'kilasziq', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:15.465Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'bc3qt26f',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:15.467Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 392ms 40b { reqId: 'bc3qt26f', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:15.526Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'cvcq0n8d',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.543Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'i76mykgt',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.561Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '1pj4wrob',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.739Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'rfiq5b5s',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.788Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'cvcq0n8d',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:15.802Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 275ms 40b { reqId: 'cvcq0n8d', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:15.811Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'i76mykgt',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:15.815Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 272ms 40b { reqId: 'i76mykgt', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:15.909Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 's7g241kt',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:15.916Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'npo2rc5a',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:16.076Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '1pj4wrob',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:16.122Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 561ms 40b { reqId: '1pj4wrob', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:16.132Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'rfiq5b5s',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:16.144Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 431ms 40b { reqId: 'rfiq5b5s', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:16.226Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'hbgnr5oz',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:16.244Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'npo2rc5a',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:16.372Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 456ms 40b { reqId: 'npo2rc5a', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:16.399Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 's7g241kt',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:16.431Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 522ms 40b { reqId: 's7g241kt', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:16.436Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'tiarslzw',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:16.492Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'su6505u2',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:16.504Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'hbgnr5oz',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:16.508Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 282ms 40b { reqId: 'hbgnr5oz', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:16.649Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: '7t749o1q',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:16.702Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'w7rnovdr',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:16.766Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'tiarslzw',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:16.777Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 338ms 40b { reqId: 'tiarslzw', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:17.063Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'su6505u2',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:17.064Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 572ms 40b { reqId: 'su6505u2', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:17.067Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: '7t749o1q',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:17.070Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 422ms 40b { reqId: '7t749o1q', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:17.077Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'uyqh92nl',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:17.159Z] [INFO ] [src\utils\logger.js:132] --> POST /auth/refresh {
+  reqId: 'oa4e8uq9',
+  query: undefined,
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  }
+}
+[2026-06-29T05:13:17.605Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'w7rnovdr',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:17.618Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 915ms 40b { reqId: 'w7rnovdr', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:17.682Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'oa4e8uq9',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:17.696Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 537ms 40b { reqId: 'oa4e8uq9', body: { error: { message: 'Player not found' } } }
+[2026-06-29T05:13:19.379Z] [ERROR] [src\utils\logger.js:161] AppError: Player not found {
+  reqId: 'uyqh92nl',
+  url: '/auth/refresh',
+  method: 'POST',
+  body: {
+    refresh_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtcXdiZmZlbTAwMDBubnJ1Ym5uaHNjeWQiLCJlbWFpbCI6InBsYXllckBleGFtcGxlLmNvbSIsImlhdCI6MTc4MjY2NjYzMywiZXhwIjoxNzgzMjcxNDMzfQ.tF6RowKUBIV4trhDZAf3me_25rma9tol3Z7A44y8_5c'
+  },
+  statusCode: 401,
+  stack: 'AppError: Player not found     at refreshTokens (C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\services\\auth.service.js:113:11)     at async C:\\Users\\anish\\OneDrive\\Desktop\\Enterprise proj\\game\\src\\controllers\\auth.controller.js:44:18'
+}
+[2026-06-29T05:13:19.386Z] [INFO ] [src\utils\logger.js:142] <-- POST /auth/refresh 401 2309ms 40b { reqId: 'uyqh92nl', body: { error: { message: 'Player not found' } } }

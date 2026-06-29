@@ -1,6 +1,7 @@
 {
   "info": {
     "name": "GAM Backend API",
+    "description": "Import this collection into Postman to test the current backend routes. Update the `baseUrl` variable to match your local server.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -13,30 +14,41 @@
       "key": "token",
       "value": "",
       "type": "string"
+    },
+    {
+      "key": "refreshToken",
+      "value": "",
+      "type": "string"
     }
   ],
   "item": [
     {
-      "name": "Health",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/health",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "health"
-          ]
+      "name": "System",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Public endpoint to confirm the server is running."
+          }
         }
-      }
+      ]
     },
     {
       "name": "Auth",
       "item": [
         {
-          "name": "Google Sign-In",
+          "name": "Register",
           "request": {
             "method": "POST",
             "header": [
@@ -47,18 +59,91 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"idToken\": \"<FIREBASE_ID_TOKEN>\"\n}"
+              "raw": "{\n  \"email\": \"player@example.com\",\n  \"password\": \"secret123\",\n  \"company_name\": \"Daily Byte\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/auth/google",
+              "raw": "{{baseUrl}}/auth/register",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "auth",
-                "google"
+                "register"
               ]
-            }
+            },
+            "description": "Creates a player account. `company_name` is optional, but adding it creates a company immediately."
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"player@example.com\",\n  \"password\": \"secret123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Logs in with email and password. Save `access_token` into the collection variable `token` and `refresh_token` into `refreshToken`."
+          }
+        },
+        {
+          "name": "Refresh Tokens",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh_token\": \"{{refreshToken}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            },
+            "description": "Exchanges a refresh token for a new access token and refresh token. Accepts either `refresh_token` or `refreshToken`."
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
+            },
+            "description": "Returns a logout confirmation message. No server-side session invalidation is performed in the current code."
           }
         }
       ]
@@ -89,7 +174,8 @@
               "path": [
                 "company"
               ]
-            }
+            },
+            "description": "Fetches the current player company and journalist roster. Requires `Authorization: Bearer {{token}}`."
           }
         },
         {
@@ -114,7 +200,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"My Media Company\"\n}"
+              "raw": "{\n  \"name\": \"Daily Byte\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/company/create",
@@ -125,7 +211,8 @@
                 "company",
                 "create"
               ]
-            }
+            },
+            "description": "Creates a company for the logged-in player. `name` is required."
           }
         },
         {
@@ -152,7 +239,8 @@
                 "company",
                 "upgrade"
               ]
-            }
+            },
+            "description": "Buys the next company upgrade. No body is required."
           }
         }
       ]
@@ -161,7 +249,7 @@
       "name": "Journalists",
       "item": [
         {
-          "name": "Get Journalists",
+          "name": "List Journalists",
           "request": {
             "auth": {
               "type": "bearer",
@@ -183,7 +271,8 @@
               "path": [
                 "journalists"
               ]
-            }
+            },
+            "description": "Returns the available journalist roster for the player company."
           }
         },
         {
@@ -208,7 +297,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"John Doe\",\n    \"skill\": 5\n}"
+              "raw": "{\n  \"character\": \"Bob\",\n  \"skill\": 1,\n  \"salary\": 600,\n  \"payment\": \"coin\",\n  \"desk_index\": 0\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/journalists/hire",
@@ -219,7 +308,8 @@
                 "journalists",
                 "hire"
               ]
-            }
+            },
+            "description": "Hires a journalist. The route requires either `character` or `name`. Optional fields: `skill`, `salary`, `payment` or `payment_method`, and `desk_index`."
           }
         },
         {
@@ -244,7 +334,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"journalistId\": \"some-journalist-id\"\n}"
+              "raw": "{\n  \"journalistId\": \"some-journalist-id\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/journalists/fire",
@@ -255,7 +345,8 @@
                 "journalists",
                 "fire"
               ]
-            }
+            },
+            "description": "Fires a journalist by ID. `journalistId` is required."
           }
         }
       ]
@@ -264,7 +355,7 @@
       "name": "Articles",
       "item": [
         {
-          "name": "Get History",
+          "name": "Article History",
           "request": {
             "auth": {
               "type": "bearer",
@@ -287,7 +378,8 @@
                 "articles",
                 "history"
               ]
-            }
+            },
+            "description": "Returns the published article history for the current company."
           }
         },
         {
@@ -312,7 +404,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"title\": \"Breaking News\",\n    \"type\": \"news\",\n    \"quality\": 8\n}"
+              "raw": "{\n  \"strategy\": \"fast\",\n  \"title\": \"Breaking News\",\n  \"type\": \"news\",\n  \"quality\": 1,\n  \"verifiedInfo\": false,\n  \"isFakeNews\": false\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/articles/publish",
@@ -323,7 +415,8 @@
                 "articles",
                 "publish"
               ]
-            }
+            },
+            "description": "Publishes an article. `strategy` is required by the route and can be `fast`, `partial`, or `full`. Other fields are optional but useful for testing."
           }
         }
       ]
@@ -332,7 +425,7 @@
       "name": "Events",
       "item": [
         {
-          "name": "Get Events",
+          "name": "List Events",
           "request": {
             "auth": {
               "type": "bearer",
@@ -354,7 +447,8 @@
               "path": [
                 "events"
               ]
-            }
+            },
+            "description": "Lists available events and the player event state."
           }
         },
         {
@@ -379,7 +473,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"eventId\": \"some-event-id\"\n}"
+              "raw": "{\n  \"eventId\": \"some-event-id\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/events/accept",
@@ -390,7 +484,8 @@
                 "events",
                 "accept"
               ]
-            }
+            },
+            "description": "Accepts an event for the current company. `eventId` is required."
           }
         },
         {
@@ -415,7 +510,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"eventId\": \"some-event-id\"\n}"
+              "raw": "{\n  \"eventId\": \"some-event-id\",\n  \"success\": true\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/events/complete",
@@ -426,13 +521,14 @@
                 "events",
                 "complete"
               ]
-            }
+            },
+            "description": "Completes an accepted event. `eventId` is required. Set `success` to `false` to simulate failure."
           }
         }
       ]
     },
     {
-      "name": "Economy & Stats",
+      "name": "Economy",
       "item": [
         {
           "name": "Get Economy",
@@ -457,7 +553,8 @@
               "path": [
                 "economy"
               ]
-            }
+            },
+            "description": "Returns economy metrics for the current player."
           }
         },
         {
@@ -484,11 +581,12 @@
                 "economy",
                 "stats"
               ]
-            }
+            },
+            "description": "Returns economy-related player stats plus journalist count."
           }
         },
         {
-          "name": "Get Global Stats",
+          "name": "Get Full Stats",
           "request": {
             "auth": {
               "type": "bearer",
@@ -510,7 +608,8 @@
               "path": [
                 "stats"
               ]
-            }
+            },
+            "description": "Returns the full game stats snapshot for the current player."
           }
         }
       ]
@@ -541,7 +640,8 @@
               "path": [
                 "leaderboard"
               ]
-            }
+            },
+            "description": "Returns the current leaderboard standings."
           }
         }
       ]

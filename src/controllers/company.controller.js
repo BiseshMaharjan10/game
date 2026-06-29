@@ -1,5 +1,5 @@
 const { asyncHandler } = require('../utils/asyncHandler');
-const { getCompany, createCompany, upgradeCompany, syncPlayerCompanyValue } = require('../services/company.service');
+const { getCompany, createCompany, upgradeCompany, syncPlayerCompanyValue, syncCompanyState } = require('../services/company.service');
 const { playerRepository } = require('../modules/auth/auth.repository');
 const {
   getCompanyContractPayload,
@@ -13,9 +13,7 @@ const getCompanyHandler = asyncHandler(async (req, res) => {
     return res.status(404).json({ error: { message: 'company not found' } });
   }
 
-  // Sync company value before responding so coins reflect the latest calculation
-  await syncPlayerCompanyValue(req.user.id);
-  const playerData = await playerRepository.findById(req.user.id);
+  const playerData = await syncPlayerCompanyValue(req.user.id);
   const journalists = company.journalists || [];
 
   res.json(getCompanyContractPayload(playerData, company, journalists));
@@ -28,11 +26,19 @@ const createCompanyHandler = asyncHandler(async (req, res) => {
 });
 
 const upgradeCompanyHandler = asyncHandler(async (req, res) => {
-  const playerBefore = await playerRepository.findById(req.user.id);
-  const company = await upgradeCompany(req.user.id);
+  const coinsOverride = req.body.coins;
+  const { debug } = require('../utils/logger');
+  debug('[upgrade] coinsOverride=%s (type=%s)', coinsOverride, typeof coinsOverride);
+  const result = await upgradeCompany(req.user.id, coinsOverride);
   const playerAfter = await playerRepository.findById(req.user.id);
-  const costDeducted = Math.max(0, (playerBefore ? playerBefore.money : 0) - (playerAfter ? playerAfter.money : 0));
-  res.json(getUpgradeCompanyContractPayload(playerAfter, company, costDeducted));
+  console.log('[debug upgrade] success level=%d cost=%d money=%d', result.company.level, result.cost, playerAfter.money);
+  res.json(getUpgradeCompanyContractPayload(playerAfter, result.company, result.cost));
 });
 
-module.exports = { getCompanyHandler, createCompanyHandler, upgradeCompanyHandler };
+const syncCompanyStateHandler = asyncHandler(async (req, res) => {
+  const result = await syncCompanyState(req.user.id, req.body);
+  const journalists = result.company ? (result.company.journalists || []) : [];
+  res.json(getCompanyContractPayload(result.player, result.company, journalists));
+});
+
+module.exports = { getCompanyHandler, createCompanyHandler, upgradeCompanyHandler, syncCompanyStateHandler };

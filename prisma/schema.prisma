@@ -23,7 +23,8 @@ enum EventStatus {
 
 model Player {
   id             String        @id @default(cuid())
-  firebaseUid    String        @unique
+  firebaseUid    String?       @unique
+  passwordHash   String?
   username       String?       @unique
   email          String        @unique
   displayName    String?
@@ -36,21 +37,25 @@ model Player {
   updatedAt      DateTime      @updatedAt
   company        Company?
   leaderboard    Leaderboard?
+  state          PlayerState?
   eventStates    PlayerEvent[]
+  eventHistory   EventHistory[]
 }
 
 model Company {
   id          String        @id @default(cuid())
   ownerId     String        @unique
   name        String
-  level       Int           @default(1)
-  reputation  Int           @default(50)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  owner       Player        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  journalists Journalist[]
-  articles    Article[]
-  events      PlayerEvent[]
+  level               Int           @default(1)
+  reputation          Int           @default(50)
+  unlockedCharacters  String[]      @default([])
+  deskAssignments     Json          @default("{}")
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+  owner               Player        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  journalists         Journalist[]
+  articles            Article[]
+  events              PlayerEvent[]
 }
 
 model Journalist {
@@ -85,6 +90,10 @@ model Event {
   id           String        @id @default(cuid())
   title        String
   description  String
+  requiredTags String[]      @default([])
+  conditions   Json
+  choices      Json
+  repeatable   Boolean       @default(false)
   difficulty   Int
   reward       Int
   risk         Int
@@ -92,6 +101,77 @@ model Event {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   playerStates PlayerEvent[]
+  history      EventHistory[]
+}
+
+model StoryTemplate {
+  id                   String         @id @default(cuid())
+  titleTemplate        String
+  descriptionTemplate  String
+  category             String
+  difficulty           Int
+  tags                 String[]       @default([])
+  variables            Json
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+  instances            StoryInstance[]
+}
+
+model StoryInstance {
+  id                   String         @id @default(cuid())
+  templateId           String
+  generatedTitle       String
+  generatedDescription String
+  tags                 String[]       @default([])
+  variables            Json
+  status               String         @default("active")
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+  template             StoryTemplate  @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  history              EventHistory[]
+
+  @@index([templateId])
+}
+
+model PlayerState {
+  id                   String    @id @default(cuid())
+  playerId             String    @unique
+  money                Int       @default(1000)
+  reputation           Int       @default(50)
+  evidence             Int       @default(0)
+  investigationProgress Int      @default(0)
+  journalists          String[]  @default([])
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  player               Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model CountryState {
+  id             String    @id @default(cuid())
+  key            String    @unique @default("global")
+  economy        Int       @default(50)
+  corruption     Int       @default(50)
+  stability      Int       @default(50)
+  publicTrust    Int       @default(50)
+  currentEvents  String[]  @default([])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model EventHistory {
+  id              String       @id @default(cuid())
+  playerId        String
+  storyInstanceId String
+  eventId         String
+  selectedChoice  Json
+  timestamp       DateTime     @default(now())
+  player          Player       @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  storyInstance   StoryInstance @relation(fields: [storyInstanceId], references: [id], onDelete: Cascade)
+  event           Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([playerId])
+  @@index([storyInstanceId])
+  @@index([eventId])
 }
 
 model Leaderboard {

@@ -4,8 +4,9 @@ const { publishArticle } = require('../services/article.service');
 const { hireJournalist } = require('../services/journalist.service');
 const { acceptEvent } = require('../services/event.service');
 const { domainEvents } = require('../events');
-const { verifyFirebaseToken } = require('../config/firebase');
+const { verifyAccessToken } = require('../config/jwt');
 const { prisma } = require('../config/prisma');
+const { buildCorsOptions } = require('../utils/cors');
 
 let io = null;
 
@@ -29,10 +30,7 @@ function bindDomainEvents() {
 
 function initSocket(server) {
   io = new Server(server, {
-    cors: {
-      origin: process.env.CLIENT_ORIGIN || true,
-      credentials: true
-    }
+    cors: buildCorsOptions()
   });
 
   bindDomainEvents();
@@ -44,8 +42,8 @@ function initSocket(server) {
         throw new AppError('Unauthorized', 401);
       }
 
-      const decodedToken = await verifyFirebaseToken(token);
-      const player = await prisma.player.findUnique({ where: { firebaseUid: decodedToken.uid } });
+      const decoded = verifyAccessToken(token);
+      const player = await prisma.player.findUnique({ where: { id: decoded.id } });
 
       if (!player) {
         throw new AppError('Unauthorized', 401);
@@ -58,7 +56,7 @@ function initSocket(server) {
       };
       next();
     } catch (error) {
-      next(error);
+      next(new AppError('Invalid or expired token', 401));
     }
   });
 

@@ -1,6 +1,9 @@
 const { AppError } = require('../utils/appError');
+const { errorLogger } = require('../utils/logger');
 
-function errorHandler(err, _req, res, _next) {
+function errorHandler(err, req, res, _next) {
+  errorLogger(err, req, res, () => {});
+
   const statusCode = err.statusCode || (err.name === 'PrismaClientKnownRequestError' ? 400 : 500);
   const payload = {
     message: err.message || 'Internal server error'

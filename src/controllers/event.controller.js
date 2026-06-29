@@ -23,6 +23,11 @@ const acceptEventHandler = asyncHandler(async (req, res) => {
     return res.status(400).json({ error: { message: 'eventId is required' } });
   }
 
+  // Handle declined tip: just acknowledge without creating an assignment
+  if (req.body && req.body.declined === true) {
+    return res.json({ success: false, message: 'Tip declined', declined: true });
+  }
+
   // assignment = Prisma PlayerEvent row with { event, company } included
   const assignment = await acceptEvent(req.user.id, eventId);
 

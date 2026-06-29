@@ -7,6 +7,13 @@ const {
   getJournalistHireFailurePayload
 } = require('../utils/responseMappers');
 
+var SKILL_MAP = {
+  "Data Entry": 1,
+  "Strategic Planning": 2,
+  "Market Analysis": 3,
+  "Project Management": 4,
+};
+
 const listJournalistsHandler = asyncHandler(async (req, res) => {
   // Real journalist rows from the DB — no longer discarded
   const journalists = await listJournalists(req.user.id);
@@ -16,12 +23,17 @@ const listJournalistsHandler = asyncHandler(async (req, res) => {
 const hireJournalistHandler = asyncHandler(async (req, res) => {
   // Determine salary from request body before the hire attempt so we can
   // report the exact needed/have amounts on failure.
-  const salary = req.body.payment === 'diamond' ? 1000 : (req.body.salary || 600);
+  var salary = req.body.payment === 'diamond' ? 1000 : (req.body.salary || 600);
 
-  const payload = {
+  var skillVal = SKILL_MAP[req.body.skill];
+  if (skillVal === undefined) {
+    skillVal = typeof req.body.skill === 'number' ? req.body.skill : 1;
+  }
+
+  var payload = {
     name:   req.body.character || req.body.name,
-    skill:  req.body.skill || 1,
-    salary
+    skill:  skillVal,
+    salary: salary
   };
 
   try {

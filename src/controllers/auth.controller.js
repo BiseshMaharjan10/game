@@ -1,41 +1,47 @@
 const { asyncHandler } = require('../utils/asyncHandler');
-const { googleSignIn } = require('../services/auth.service');
-const { companyRepository } = require('../modules/company/company.repository');
+const { register, login, refreshTokens } = require('../services/auth.service');
 const { journalistRepository } = require('../modules/journalists/journalists.repository');
 const {
   getAuthContractPayload,
   getRefreshContractPayload,
-  getLogoutContractPayload
+  getLogoutContractPayload,
 } = require('../utils/responseMappers');
 
-const googleSignInHandler = asyncHandler(async (req, res) => {
-  // result = { player: PlayerDto }
-  const result = await googleSignIn(req.body);
-  const player = result.player;
+const registerHandler = asyncHandler(async (req, res) => {
+  const { email, password, company_name } = req.body;
+  const result = await register({ email, password, company_name });
 
-  // Fetch company and journalists to populate the company block in the auth response
-  // company may be null if the player has not created one yet
-  const company = await companyRepository.findByOwnerId(player.id);
-  const journalists = company
-    ? await journalistRepository.listByCompany(company.id)
+  const journalists = result.company
+    ? await journalistRepository.listByCompany(result.company.id)
     : [];
 
-  // Tokens: the Firebase idToken the client sent IS the access token.
-  // This backend does not issue its own tokens — the client manages Firebase sessions.
-  // We echo the tokens back so the client contract is satisfied.
-  const tokens = {
-    access_token:  req.body.idToken   || req.body.access_token  || null,
-    refresh_token: req.body.refreshToken || req.body.refresh_token || null
-  };
+  const payload = getAuthContractPayload(result.player, result.company, journalists, {
+    access_token: result.access_token,
+    refresh_token: result.refresh_token,
+  });
 
-  res.status(200).json(getAuthContractPayload(player, company, journalists, tokens));
+  res.status(201).json(payload);
+});
+
+const loginHandler = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const result = await login({ email, password });
+
+  const journalists = result.company
+    ? await journalistRepository.listByCompany(result.company.id)
+    : [];
+
+  const payload = getAuthContractPayload(result.player, result.company, journalists, {
+    access_token: result.access_token,
+    refresh_token: result.refresh_token,
+  });
+
+  res.status(200).json(payload);
 });
 
 const refreshHandler = asyncHandler(async (req, res) => {
-  const tokens = {
-    access_token:  req.body.idToken      || req.body.access_token  || null,
-    refresh_token: req.body.refreshToken || req.body.refresh_token || null
-  };
+  const refreshToken = req.body.refresh_token || req.body.refreshToken;
+  const tokens = await refreshTokens(refreshToken);
   res.status(200).json(getRefreshContractPayload(tokens));
 });
 
@@ -43,4 +49,4 @@ const logoutHandler = asyncHandler(async (_req, res) => {
   res.status(200).json(getLogoutContractPayload());
 });
 
-module.exports = { googleSignInHandler, refreshHandler, logoutHandler };
+module.exports = { registerHandler, loginHandler, refreshHandler, logoutHandler };
