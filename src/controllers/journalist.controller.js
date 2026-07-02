@@ -1,69 +1,205 @@
-const { asyncHandler } = require('../utils/asyncHandler');
-const { listJournalists, hireJournalist, fireJournalist } = require('../services/journalist.service');
-const { playerRepository } = require('../modules/auth/auth.repository');
+const { asyncHandler } = require("../utils/asyncHandler");
+const { AppError } = require("../utils/appError");
 const {
-  getJournalistListContractPayload,
-  getJournalistHireSuccessPayload,
-  getJournalistHireFailurePayload
-} = require('../utils/responseMappers');
+  listOwned,
+  hireCharacter,
+  appointCharacter,
+  listCharacterTemplates,
+} = require("../services/journalist.service");
 
-var SKILL_MAP = {
-  "Data Entry": 1,
-  "Strategic Planning": 2,
-  "Market Analysis": 3,
-  "Project Management": 4,
-};
+const VALID_CHARACTER_IDS = ['bob', 'robin', 'lisa', 'michael'];
 
-const listJournalistsHandler = asyncHandler(async (req, res) => {
-  // Real journalist rows from the DB — no longer discarded
-  const journalists = await listJournalists(req.user.id);
-  res.json(getJournalistListContractPayload(journalists));
+function mapCharacters(owned) {
+  return owned
+    .filter(function (pc) { return pc.quantity > 0; })
+    .map(function (pc) {
+      return { characterId: pc.characterId, quantity: pc.quantity };
+    });
+}
+
+const listCharactersHandler = asyncHandler(async (req, res) => {
+  console.log(`[listCharactersHandler] START playerId=${req.user.id}`);
+  const owned = await listOwned(req.user.id);
+  console.log(`[listCharactersHandler] owned=${owned.length}`);
+  res.json({ characters: mapCharacters(owned) });
 });
 
-const hireJournalistHandler = asyncHandler(async (req, res) => {
-  // Determine salary from request body before the hire attempt so we can
-  // report the exact needed/have amounts on failure.
-  var salary = req.body.payment === 'diamond' ? 1000 : (req.body.salary || 600);
+const recruitCharacterHandler = asyncHandler(async (req, res) => {
+  const tag = '[recruitCharacterHandler]';
+  const _t0 = Date.now();
+  let characterId = "";
 
-  var skillVal = SKILL_MAP[req.body.skill];
-  if (skillVal === undefined) {
-    skillVal = typeof req.body.skill === 'number' ? req.body.skill : 1;
-  }
-
-  var payload = {
-    name:   req.body.character || req.body.name,
-    skill:  skillVal,
-    salary: salary
-  };
+  console.log(`${tag} ENTERED body=${JSON.stringify(req.body)}`);
+  console.log(`${tag} user.id=${req.user.id}`);
 
   try {
-    // journalist = newly created Prisma row
-    const journalist = await hireJournalist(req.user.id, payload);
+    characterId = (req.body.characterId || req.body.character || req.body.name || "").toLowerCase();
+    const purchaseType = req.body.purchaseType || "gems";
+    const deskIndex = req.body.deskIndex;
 
-    // Fetch updated player (money already deducted by service) and full journalist list
-    const playerAfter  = await playerRepository.findById(req.user.id);
-    const allJournalists = await listJournalists(req.user.id);
+    console.log(`${tag} characterId=${characterId} purchaseType=${purchaseType} deskIndex=${deskIndex}`);
 
-    res.status(201).json(
-      getJournalistHireSuccessPayload(journalist, playerAfter, allJournalists, req.body)
-    );
-  } catch (error) {
-    if (error.message === 'insufficient funds') {
-      // Fetch player to report real "have" amount
-      const player = await playerRepository.findById(req.user.id);
-      const have = player ? player.money : null;
-      res.status(400).json(
-        getJournalistHireFailurePayload(req.body, salary, have)
-      );
-      return;
+    if (!VALID_CHARACTER_IDS.includes(characterId)) {
+      console.log(`${tag} FAIL: invalid characterId=${characterId}`);
+      return res.status(404).json({
+        error: { message: "Character not found" },
+      });
     }
-    throw error;
+
+    if (!["coins", "gems"].includes(purchaseType)) {
+      console.log(`${tag} FAIL: invalid purchaseType=${purchaseType}`);
+      return res.status(400).json({
+        error: { message: "purchaseType must be 'coins' or 'gems'" },
+      });
+    }
+
+    if (deskIndex == null || deskIndex < 1 || deskIndex > 8) {
+      console.log(`${tag} FAIL: invalid deskIndex=${deskIndex}`);
+      return res.status(400).json({
+        error: { message: "deskIndex must be between 1 and 8" },
+      });
+    }
+
+    console.log(`${tag} calling hireCharacter service`);
+    const player = await hireCharacter(req.user.id, characterId, purchaseType, deskIndex);
+    console.log(`${tag} service returned`);
+
+    const owned = mapCharacters(
+      player.characters.filter(function (pc) { return pc.quantity > 0; })
+    );
+
+    const desks = (player.desks || []).map(function (d) {
+      return {
+        deskIndex: d.deskIndex,
+        unlocked: d.unlocked,
+        assignedCharacterId: d.assignedCharacterId,
+        cost: d.cost,
+      };
+    });
+
+    const unlockedCount = desks.filter(function(d) { return d.unlocked; }).length;
+
+    const response = {
+      player: {
+        coins: player.coins,
+        gems: player.gems,
+        company: player.company
+          ? { name: player.company.name, level: player.company.level }
+          : null,
+        characters: owned,
+      },
+      desks: desks,
+      unlocked_desks: unlockedCount,
+    };
+    const _t_serialize = Date.now();
+    const jsonStr = JSON.stringify(response);
+    console.log(`${tag} response=${jsonStr}`);
+    console.log(`[RESPONSE] POST /characters/recruit unlocked_desks=${unlockedCount} desks=${JSON.stringify(desks.map(function(d) { return {deskIndex: d.deskIndex, unlocked: d.unlocked, assignedCharacterId: d.assignedCharacterId}; }))}`);
+    res.status(201).json(JSON.parse(jsonStr));
+    const _t_done = Date.now();
+
+    console.log(`[TIMING] Authentication: N/A (logged in middleware)`);
+    console.log(`[TIMING] hireCharacter service: ${_t_serialize - _t0} ms`);
+    console.log(`[TIMING] JSON serialize + send: ${_t_done - _t_serialize} ms`);
+    console.log(`[TIMING] TOTAL: ${_t_done - _t0} ms`);
+  } catch (error) {
+    console.error(`${tag} CAUGHT error message="${error.message}"`, error);
+
+    console.error("=== ERROR DEBUG ===");
+    console.error("constructor:", error?.constructor?.name);
+    console.error("name:", error?.name);
+    console.error("instanceof AppError:", error instanceof AppError);
+    console.error("statusCode:", error?.statusCode);
+    console.error("message:", error?.message);
+    console.error("prototype:", Object.getPrototypeOf(error)?.constructor?.name);
+    console.error("keys:", Object.keys(error));
+    console.error("stack:", error?.stack);
+    console.error("Imported AppError:", AppError);
+
+    if (error instanceof AppError) {
+      const msg = error.message === "character already recruited"
+        ? characterId + " has already been recruited"
+        : error.message === "insufficient gems"
+          ? "Not enough gems to recruit " + characterId
+          : error.message === "insufficient coins"
+            ? "Not enough coins to recruit " + characterId
+            : error.message;
+      return res.status(error.statusCode).json({
+        error: { message: msg },
+      });
+    }
+
+    return res.status(500).json({
+      error: { message: "An unexpected error occurred." },
+    });
   }
 });
 
-const fireJournalistHandler = asyncHandler(async (req, res) => {
-  const journalist = await fireJournalist(req.user.id, req.body.journalistId);
-  res.json({ journalist });
+const appointCharacterHandler = asyncHandler(async (req, res) => {
+  const tag = '[appointCharacterHandler]';
+  console.log(`${tag} ENTERED body=${JSON.stringify(req.body)}`);
+  console.log(`${tag} user.id=${req.user.id}`);
+
+  try {
+    const characterId = (req.body.characterId || req.body.character || req.body.name || "").toLowerCase();
+    console.log(`${tag} characterId=${characterId}`);
+
+    if (!VALID_CHARACTER_IDS.includes(characterId)) {
+      console.log(`${tag} FAIL: invalid characterId=${characterId}`);
+      return res.status(404).json({
+        error: { message: "Character not found" },
+      });
+    }
+
+    console.log(`${tag} calling appointCharacter service`);
+    const player = await appointCharacter(req.user.id, characterId);
+    console.log(`${tag} service returned`);
+
+    const owned = mapCharacters(
+      player.characters.filter(function (pc) { return pc.quantity > 0; })
+    );
+
+    const response = {
+      player: {
+        coins: player.coins,
+        gems: player.gems,
+        company: player.company
+          ? { name: player.company.name, level: player.company.level }
+          : null,
+        characters: owned,
+      },
+    };
+    console.log(`${tag} response=${JSON.stringify(response)}`);
+
+    return res.status(200).json(response);
+  } catch (error) {
+    console.error(`${tag} CAUGHT error message="${error.message}"`, error);
+
+    if (error.message === "character not owned") {
+      return res.status(400).json({
+        error: { message: characterId + " is not owned" },
+      });
+    }
+    if (error.message === "insufficient coins") {
+      return res.status(400).json({
+        error: { message: "Not enough coins to appoint " + characterId },
+      });
+    }
+
+    return res.status(500).json({
+      error: { message: "An unexpected error occurred." },
+    });
+  }
 });
 
-module.exports = { listJournalistsHandler, hireJournalistHandler, fireJournalistHandler };
+const listCharacterTemplatesHandler = asyncHandler(async (req, res) => {
+  const templates = await listCharacterTemplates();
+  res.json({ templates });
+});
+
+module.exports = {
+  listCharactersHandler,
+  recruitCharacterHandler,
+  appointCharacterHandler,
+  listCharacterTemplatesHandler,
+};
