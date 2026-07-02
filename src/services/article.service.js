@@ -1,6 +1,7 @@
 const { AppError } = require('../utils/appError');
 const { calculateRevenue, calculateTrustDelta, calculateSubscriberDelta, calculateCompanyValue } = require('../utils/gameMath');
 const { companyRepository } = require('../modules/company/company.repository');
+const { ensureCompany } = require('./company.service');
 const { articleRepository } = require('../modules/articles/articles.repository');
 const { playerRepository } = require('../modules/auth/auth.repository');
 const { totalSalaryExpense } = require('./journalist.service');
@@ -8,23 +9,20 @@ const { recalculateLeaderboard } = require('./leaderboard.service');
 const { emitEvent } = require('../sockets/hub');
 
 async function publishArticle(playerId, { title, type, quality, verifiedInfo = false, isFakeNews = false }) {
-  const company = await companyRepository.findByOwnerId(playerId);
-  if (!company) {
-    throw new AppError('company not found', 404);
-  }
+  const company = await ensureCompany(playerId);
 
   const player = await playerRepository.findById(playerId);
   const trustDelta = calculateTrustDelta({ quality, verifiedInfo, isFakeNews });
   const subscriberDelta = calculateSubscriberDelta({ trustDelta, quality });
   const nextTrustScore = Math.max(0, Math.min(100, player.trustScore + trustDelta));
-  const nextSubscribers = Math.max(0, player.subscribers + subscriberDelta);
+  const nextSubscribers = Math.max(0, player.gems + subscriberDelta);
   const revenue = calculateRevenue({
     subscribers: nextSubscribers,
     articleQuality: quality,
     trustScore: nextTrustScore
   });
   const salaryExpense = await totalSalaryExpense(playerId);
-  const nextMoney = Math.max(0, player.money + revenue - salaryExpense);
+  const nextMoney = Math.max(0, player.coins + revenue - salaryExpense);
   const nextCompanyValue = calculateCompanyValue({
     money: nextMoney,
     trustScore: nextTrustScore,
@@ -42,16 +40,16 @@ async function publishArticle(playerId, { title, type, quality, verifiedInfo = f
   });
 
   await playerRepository.update(playerId, {
-    money: nextMoney,
+    coins: nextMoney,
     trustScore: nextTrustScore,
-    subscribers: nextSubscribers,
+    gems: nextSubscribers,
     companyValue: nextCompanyValue
   });
 
   await recalculateLeaderboard();
-  emitEvent('money_updated', { playerId, money: nextMoney });
+  emitEvent('coins_updated', { playerId, coins: nextMoney });
   emitEvent('trust_updated', { playerId, trustScore: nextTrustScore });
-  emitEvent('subscriber_updated', { playerId, subscribers: nextSubscribers });
+  emitEvent('gems_updated', { playerId, gems: nextSubscribers });
 
   return {
     article,
@@ -69,10 +67,7 @@ async function publishArticle(playerId, { title, type, quality, verifiedInfo = f
 }
 
 async function articleHistory(playerId) {
-  const company = await companyRepository.findByOwnerId(playerId);
-  if (!company) {
-    throw new AppError('company not found', 404);
-  }
+  const company = await ensureCompany(playerId);
 
   return articleRepository.listByCompany(company.id);
 }
