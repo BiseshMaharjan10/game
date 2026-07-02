@@ -1,11 +1,11 @@
 function toPlayerDto(player) {
   return {
     id: player.id,
-    username: player.username,
+    companyName: player.companyName,
     email: player.email,
-    money: player.money,
+    money: player.coins,
     trustScore: player.trustScore,
-    subscribers: player.subscribers,
+    subscribers: player.gems,
     companyValue: player.companyValue
   };
 }

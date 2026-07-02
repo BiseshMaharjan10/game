@@ -1,7 +1,7 @@
 const { Server } = require('socket.io');
 const { AppError } = require('../utils/appError');
 const { publishArticle } = require('../services/article.service');
-const { hireJournalist } = require('../services/journalist.service');
+const { hireCharacter } = require('../services/journalist.service');
 const { acceptEvent } = require('../services/event.service');
 const { domainEvents } = require('../events');
 const { verifyAccessToken } = require('../config/jwt');
@@ -15,15 +15,15 @@ function getSocketRoom(playerId) {
 }
 
 function bindDomainEvents() {
-  domainEvents.removeAllListeners('money.updated');
+  domainEvents.removeAllListeners('coins.updated');
   domainEvents.removeAllListeners('trust.updated');
-  domainEvents.removeAllListeners('subscriber.updated');
+  domainEvents.removeAllListeners('gems.updated');
   domainEvents.removeAllListeners('leaderboard.updated');
   domainEvents.removeAllListeners('event.created');
 
-  domainEvents.on('money.updated', (payload) => io?.to(getSocketRoom(payload.playerId)).emit('money_updated', payload));
+  domainEvents.on('coins.updated', (payload) => io?.to(getSocketRoom(payload.playerId)).emit('coins_updated', payload));
   domainEvents.on('trust.updated', (payload) => io?.to(getSocketRoom(payload.playerId)).emit('trust_updated', payload));
-  domainEvents.on('subscriber.updated', (payload) => io?.to(getSocketRoom(payload.playerId)).emit('subscriber_updated', payload));
+  domainEvents.on('gems.updated', (payload) => io?.to(getSocketRoom(payload.playerId)).emit('gems_updated', payload));
   domainEvents.on('leaderboard.updated', (payload) => io?.emit('leaderboard_updated', payload));
   domainEvents.on('event.created', (payload) => io?.emit('event_created', payload));
 }
@@ -51,7 +51,7 @@ function initSocket(server) {
 
       socket.data.user = {
         id: player.id,
-        username: player.username,
+        companyName: player.companyName,
         email: player.email
       };
       next();
@@ -72,11 +72,18 @@ function initSocket(server) {
       }
     });
 
-    socket.on('hire_journalist', async (payload, ack = () => {}) => {
+    socket.on('hire_character', async (payload, ack = () => {}) => {
+      const tag = '[socket:hire_character]';
+      console.log(`${tag} payload=`, payload, 'user.id=', socket.data.user.id);
       try {
-        const result = await hireJournalist(socket.data.user.id, payload);
+        const characterId = payload.characterId || payload.character || payload.name;
+        const purchaseType = payload.purchaseType || 'gems';
+        console.log(`${tag} characterId=${characterId} purchaseType=${purchaseType}`);
+        const result = await hireCharacter(socket.data.user.id, characterId, purchaseType);
+        console.log(`${tag} success coins=${result.coins} gems=${result.gems}`);
         ack({ ok: true, data: result });
       } catch (error) {
+        console.error(`${tag} error=`, error);
         ack({ ok: false, error: error.message });
       }
     });

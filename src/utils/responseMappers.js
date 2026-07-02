@@ -8,23 +8,6 @@
  * No hardcoded sample values exist in this file.
  */
 
-// ---------------------------------------------------------------------------
-// Static game-design catalog (journalist archetype attributes).
-// These are game constants, NOT player-specific data.  The actual DB fields
-// (skill int 1-10, salary, loyalty) are separate and mapped from the DB row.
-// ---------------------------------------------------------------------------
-const CHARACTER_CATALOG = {
-  Bob:     { skill: 'Data Entry',         desc: 'Reliable junior level worker.',          influence: 10, timeliness: 40, accuracy: 60, rec: 100, recur: 50 },
-  Robin:   { skill: 'Strategic Planning', desc: 'Elite strategist with a sharp mind.',    influence: 80, timeliness: 70, accuracy: 75, rec: 500, recur: 200 },
-  Lisa:    { skill: 'Market Analysis',    desc: 'Expert analyst focusing on growth.',     influence: 70, timeliness: 85, accuracy: 90, rec: 600, recur: 250 },
-  Michael: { skill: 'Project Management', desc: 'Seasoned leader for complex projects.',  influence: 90, timeliness: 60, accuracy: 80, rec: 700, recur: 300 }
-};
-
-// Static game roster — these define which characters are available in the game,
-// not which ones the player has hired.
-const JUNIOR_CHARACTERS = ['Bob', 'Lisa'];
-const ELITE_CHARACTERS  = ['Robin', 'Michael'];
-const DEFAULT_DIAMONDS = 1575;
 const DEFAULT_TIP_COOLDOWN = 2;
 const ECONOMY_SERIES = {
   gdp: {
@@ -46,8 +29,10 @@ const ECONOMY_SERIES = {
 };
 
 function getCharacterRoster() {
-  return Object.keys(CHARACTER_CATALOG).map(function(name) {
-    return Object.assign({ name: name }, CHARACTER_CATALOG[name]);
+  return [
+    'bob', 'robin', 'lisa', 'michael'
+  ].map(function (id) {
+    return { id: id };
   });
 }
 
@@ -108,37 +93,49 @@ function formatMoney(amount) {
 // ===========================================================================
 
 /**
- * @param {object} player      - Prisma Player row
- * @param {object} company     - Prisma Company row (or null if not yet created)
- * @param {Array}  journalists - Prisma Journalist rows for this company
- * @param {object} tokens      - { access_token, refresh_token } from Firebase/client
+ * @param {object} player           - Prisma Player row
+ * @param {object} company          - Prisma Company row (or null if not yet created)
+ * @param {Array}  playerCharacters - Prisma PlayerCharacter rows for this company
+ * @param {object} tokens           - { access_token, refresh_token } from Firebase/client
+ * @param {number} unlockedDesks    - Count of unlocked Desk rows from the database
+ * @param {Array}  desks            - Desk rows from the database
  */
-function getAuthContractPayload(player, company, journalists, tokens) {
-  journalists = journalists || [];
+function getAuthContractPayload(player, company, playerCharacters, tokens, unlockedDesks, desks) {
+  playerCharacters = playerCharacters || [];
   tokens = tokens || {};
-  const unlockedDesks = company ? Math.max(3, company.level + 2) : 3;
-  const fromJournalists = journalists.map(function(j) { return j.name; });
+  unlockedDesks = unlockedDesks != null ? unlockedDesks : 0;
+  desks = desks || [];
+  const charIds = playerCharacters.map(function(pc) { return pc.characterId; });
   const companyStored = (company && company.unlockedCharacters) || [];
-  const unlockedCharacters = companyStored.length ? companyStored : fromJournalists;
+  const unlockedCharacters = companyStored.length ? companyStored : charIds;
   const companyAssignments = (company && company.deskAssignments) || {};
   const deskAssignments = Object.keys(companyAssignments).length ? companyAssignments : buildDeskAssignments(unlockedCharacters);
+  const mappedDesks = desks.map(function(d) {
+    return {
+      deskIndex: d.deskIndex,
+      unlocked: d.unlocked,
+      assignedCharacterId: d.assignedCharacterId,
+    };
+  });
 
   return {
     access_token:  tokens.access_token  || null,
     refresh_token: tokens.refresh_token || null,
     email:         player.email,
+    companyName:   player.companyName   || null,
     name:          player.displayName || player.email.split('@')[0],
     level:         1,
     xp:            0,
     company: {
       name:                company ? company.name : null,
-      coins:               player.money,
-      diamonds:            DEFAULT_DIAMONDS,
+      coins:               player.coins,
+      gems:                player.gems,
       trust_score:         player.trustScore,
       unlocked_desks:      unlockedDesks,
       unlocked_characters: unlockedCharacters,
       desk_assignments:    deskAssignments,
     },
+    desks: mappedDesks,
   };
 }
 
@@ -159,52 +156,46 @@ function getLogoutContractPayload() {
 // ===========================================================================
 
 /**
- * @param {object} player      - Prisma Player row
- * @param {object} company     - Prisma Company row
- * @param {Array}  journalists - Prisma Journalist rows for this company
+ * @param {object} player           - Prisma Player row
+ * @param {object} company          - Prisma Company row
+ * @param {Array}  playerCharacters - Prisma PlayerCharacter rows for this company
+ * @param {number} unlockedDesks    - Count of unlocked Desk rows from the database
  */
-function getCompanyContractPayload(player, company, journalists) {
-  journalists = journalists || [];
-  const unlockedDesks = Math.max(3, (company ? company.level : 1) + 2);
-  const hiredNames = journalists.map(function(j) { return j.name; });
+function getCompanyContractPayload(player, company, playerCharacters, unlockedDesks) {
+  playerCharacters = playerCharacters || [];
+  unlockedDesks = unlockedDesks != null ? unlockedDesks : 0;
+  const charIds = playerCharacters.map(function(pc) { return pc.characterId; });
 
   const savedUnlocked = (company && company.unlockedCharacters) || [];
   const savedAssignments = (company && company.deskAssignments) || {};
 
   return {
-    name:            company ? company.name : null,                // FROM company.name
-    coins:           player ? player.money : 0,                    // FROM player.money
-    diamonds:        DEFAULT_DIAMONDS,                             // Game-design baseline currency
-    trust_score:     player ? player.trustScore : 0,               // FROM player.trustScore
-    unlocked_desks:  unlockedDesks,                                // DERIVED: max(3, company.level + 2)
-    unlocked_characters: savedUnlocked.length ? savedUnlocked : hiredNames,  // FROM company or derived
-    desk_assignments:     Object.keys(savedAssignments).length ? savedAssignments : buildDeskAssignments(hiredNames), // FROM company or derived
-    desk_characters:      buildDeskAssignments(hiredNames),        // Derived desk map for hired characters (compat)
-    characters: getCharacterRoster(),                              // Static roster for the frontend catalog
-    hired_characters: hiredNames,                                  // Compatibility: actual hired names
-    journalists: journalists.map(function(j) {
-      return {
-        id:        j.id,
-        name:      j.name,
-        skill:     j.skill,
-        salary:    j.salary,
-        loyalty:   j.loyalty
-      };
-    })
+    name:            company ? company.name : null,
+    coins:           player ? player.coins : 0,
+    gems:            player ? player.gems : 0,
+    trust_score:     player ? player.trustScore : 0,
+    unlocked_desks:  unlockedDesks,
+    unlocked_characters: savedUnlocked.length ? savedUnlocked : charIds,
+    desk_assignments:     Object.keys(savedAssignments).length ? savedAssignments : buildDeskAssignments(charIds),
+    desk_characters:      buildDeskAssignments(charIds),
+    characters:           getCharacterRoster(),
+    hired_characters:     charIds,
   };
 }
 
 /**
- * @param {object} player  - Prisma Player row (post-create)
- * @param {object} company - Prisma Company row (newly created)
+ * @param {object} player       - Prisma Player row (post-create)
+ * @param {object} company      - Prisma Company row (newly created)
+ * @param {number} unlockedDesks - Count of unlocked Desk rows from the database
  */
-function getCreateCompanyContractPayload(player, company) {
+function getCreateCompanyContractPayload(player, company, unlockedDesks) {
+  unlockedDesks = unlockedDesks != null ? unlockedDesks : 0;
   return {
     name:           company ? company.name : null,                  // FROM company.name
-    coins:          player  ? player.money : 0,                     // FROM player.money
-    diamonds:       DEFAULT_DIAMONDS,                               // Game-design baseline currency
+    coins:          player  ? player.coins : 0,                     // FROM player.money
+    gems:           player  ? player.gems : 0,                      // FROM player.gems
     trust_score:    player  ? player.trustScore : 0,                // FROM player.trustScore
-    unlocked_desks:      3,                                               // CONSTANT: always 3 for new company
+    unlocked_desks:      unlockedDesks,
     unlocked_characters: [],                                             // No hires yet
     desk_assignments:    {},                                             // No hires yet
     desk_characters:     {},                                             // No hires yet
@@ -217,16 +208,17 @@ function getCreateCompanyContractPayload(player, company) {
  * @param {object} player       - Prisma Player row (post-upgrade)
  * @param {object} company      - Prisma Company row (post-upgrade)
  * @param {number} costDeducted - Actual coins spent
+ * @param {number} unlockedDesks - Count of unlocked Desk rows from the database
  */
-function getUpgradeCompanyContractPayload(player, company, costDeducted) {
+function getUpgradeCompanyContractPayload(player, company, costDeducted, unlockedDesks) {
   costDeducted = costDeducted || 0;
-  const unlockedDesks = Math.max(3, (company ? company.level : 1) + 2);
+  unlockedDesks = unlockedDesks != null ? unlockedDesks : 0;
   const nextDeskCost  = 100 + (Math.max(3, unlockedDesks - 1) * 50); // Next desk uses the previous unlocked count
 
   return {
     next_desk_cost:       nextDeskCost,                                  // DERIVED: game formula
     coins_deducted:       costDeducted,                                  // DERIVED: playerBefore.money - playerAfter.money
-    coins_remaining:      player ? player.money : 0,                    // FROM player.money (post-upgrade)
+    coins_remaining:      player ? player.coins : 0,                    // FROM player.money (post-upgrade)
     unlocked_desks:       unlockedDesks,                                 // DERIVED: max(3, company.level + 2)
     unlocked_characters:  (company && company.unlockedCharacters) || [],  // FROM company
     desk_assignments:     (company && company.deskAssignments) || {},     // FROM company
@@ -241,42 +233,30 @@ function getUpgradeCompanyContractPayload(player, company, costDeducted) {
 /**
  * @param {Array} journalists - All Prisma Journalist rows for this company
  */
-function getJournalistListContractPayload(journalists) {
-  journalists = journalists || [];
-  const hiredNames = journalists.map(function(j) { return j.name; });
-
-  return {
-    junior_characters: JUNIOR_CHARACTERS,          // CONSTANT: game roster definition
-    elite_characters:  ELITE_CHARACTERS,           // CONSTANT: game roster definition
-    unlocked:          hiredNames,                 // FROM journalist rows (hired journalists)
-    characters:        CHARACTER_CATALOG           // CONSTANT: game-design attribute table
-  };
+function getJournalistListContractPayload() {
+  return { characters: getAllCharacters() };
 }
 
 /**
- * @param {object} journalist  - Newly created Prisma Journalist row
- * @param {object} player      - Prisma Player row (post-hire, money already deducted)
- * @param {Array}  journalists - All journalist rows for this company (post-hire)
- * @param {object} body        - Original request body (for payment_method)
+ * @param {object}  characterId    - ID of the hired character
+ * @param {object}  player         - Prisma Player row (post-hire)
+ * @param {Array}   playerCharacters - All PlayerCharacter rows for this player
+ * @param {object}  body           - Original request body
  */
-function getJournalistHireSuccessPayload(journalist, player, journalists, body) {
-  journalists = journalists || [];
+function getJournalistHireSuccessPayload(characterId, player, playerCharacters, body) {
+  playerCharacters = playerCharacters || [];
   body = body || {};
-  const paymentMethod = body.payment || body.payment_method || 'coin';
-  const hiredNames = journalists.map(function(j) { return j.name; });
+  const charIds = playerCharacters.map(function(pc) { return pc.characterId; });
   const deskIndex = body.desk_index != null ? Number(body.desk_index) : null;
-  const deskAssignments = buildDeskAssignments(hiredNames, deskIndex);
+  const deskAssignments = buildDeskAssignments(charIds, deskIndex);
 
   return {
     success:             true,
-    character:           journalist.name,                           // FROM journalist.name
-    payment_method:      paymentMethod,                             // FROM request body
-    cost:                journalist.salary,                         // FROM journalist.salary (actual DB value)
-    coins_remaining:     player.money,                              // FROM player.money (post-hire)
-    unlocked_characters: hiredNames,                                // FROM all journalist rows
-    desk_assignments:    deskAssignments,                            // Derived from current hires
-    message:             journalist.name + ' hired and assigned' +
-      (deskIndex != null && !Number.isNaN(deskIndex) ? ' to desk ' + deskIndex : '')
+    character:           characterId,
+    coins_remaining:     player.coins,
+    unlocked_characters: charIds,
+    desk_assignments:    deskAssignments,
+    message:             characterId + ' recruited',
   };
 }
 
@@ -355,13 +335,13 @@ function getArticlePublishContractPayload(article, effects, strategy) {
       quality:          article.quality,                        // FROM article.quality
       attention:        strategy === 'partial' ? 92.0 : strategy === 'full' ? 80.0 : 100.0,
       trust_delta:      effects ? effects.trustDelta       : null, // FROM gameMath.calculateTrustDelta
-      money_delta:      moneyDelta,                             // DERIVED: revenue - salaryExpense
-      subscriber_delta: effects ? effects.subscriberDelta  : null, // FROM gameMath.calculateSubscriberDelta
+      coins_delta:      moneyDelta,                             // DERIVED: revenue - salaryExpense
+      gems_delta:       effects ? effects.subscriberDelta  : null, // FROM gameMath.calculateSubscriberDelta
       premium_delta:    strategy === 'full' ? 1 : strategy === 'partial' ? 0 : 0,
       sponsor_delta:    effects && effects.subscriberDelta != null
         ? (effects.subscriberDelta > 0 ? 1 : effects.subscriberDelta < 0 ? -1 : 0)
         : null,
-      coins_remaining:  effects ? effects.nextMoney        : null, // FROM player.money (post-publish)
+      coins_remaining:  effects ? effects.nextMoney        : null, // FROM player.coins (post-publish)
       trust_remaining:  effects ? effects.nextTrustScore   : null, // FROM player.trustScore (post-publish)
       headline:         article.title                           // FROM article.title
     }
@@ -474,8 +454,8 @@ function getEventCompleteContractPayload(outcome) {
       },
       strategy:         participation ? participation.status : null, // FROM playerEvent.status
       trust_delta:      deltas ? deltas.trustDelta      : null,      // FROM completeEvent() outcome
-      money_delta:      deltas ? deltas.moneyDelta      : null,      // FROM completeEvent() outcome
-      subscriber_delta: deltas ? deltas.subscriberDelta : null,      // FROM completeEvent() outcome
+      coins_delta:      deltas ? deltas.moneyDelta      : null,      // FROM completeEvent() outcome
+      gems_delta:       deltas ? deltas.subscriberDelta : null,      // FROM completeEvent() outcome
       premium_delta:    deltas ? (deltas.subscriberDelta > 0 ? 1 : 0) : null,
       headline:         event.title || null                          // FROM event.title
     }
@@ -546,8 +526,8 @@ function getFullStatsContractPayload(stats, company, journalistCount) {
     turn:          0,
     max_turns:     40,
     trust:         stats.trustScore   != null ? stats.trustScore   : null, // FROM player.trustScore
-    money:         stats.money        != null ? stats.money        : null, // FROM player.money
-    subscribers:   stats.subscribers  != null ? stats.subscribers  : null, // FROM player.subscribers
+    money:         stats.money        != null ? stats.money        : null, // FROM player.coins
+    gems:          stats.subscribers  != null ? stats.subscribers  : null, // FROM player.gems
     company_value: stats.companyValue != null ? stats.companyValue : null, // FROM player.companyValue
     company_level: stats.companyLevel != null ? stats.companyLevel : null, // FROM company.level
     reputation:    stats.reputation   != null ? stats.reputation   : null, // FROM company.reputation
@@ -561,7 +541,7 @@ function getFullStatsContractPayload(stats, company, journalistCount) {
 
 /**
  * @param {Array} entries - Prisma Leaderboard rows with .player relation
- *   Each: { rank, score, player: { id, username, email, money, trustScore, subscribers, companyValue, company? } }
+ *   Each: { rank, score, player: { id, companyName, email, coins, trustScore, gems, companyValue, company? } }
  */
 function getLeaderboardContractPayload(entries) {
   entries = entries || [];
@@ -569,17 +549,17 @@ function getLeaderboardContractPayload(entries) {
     outlets: entries.map(function(entry) {
       var player  = entry.player || {};
       var company = player.company || null;
-      // Prefer company name, fall back to username, then email prefix
+      // Prefer company name, fall back to companyName, then email prefix
       var outletName = (company && company.name)
         ? company.name
-        : (player.username || (player.email ? player.email.split('@')[0] : null));
+        : (player.companyName || (player.email ? player.email.split('@')[0] : null));
 
       return {
         rank:        entry.rank,                               // FROM leaderboard.rank
-        name:        outletName,                               // FROM company.name or player.username
+        name:        outletName,                               // FROM company.name or player.companyName
         trust:       player.trustScore  != null ? player.trustScore  : null, // FROM player.trustScore
-        money:       player.money       != null ? player.money       : null, // FROM player.money
-        subscribers: player.subscribers != null ? player.subscribers : null, // FROM player.subscribers
+        money:       player.coins != null ? player.coins : null, // FROM player.coins
+        gems:        player.gems  != null ? player.gems  : null, // FROM player.gems
         score:       entry.score,                              // FROM leaderboard.score
         grade:       player.trustScore  != null ? gradeFromTrust(player.trustScore) : null // DERIVED
       };
