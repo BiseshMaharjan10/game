@@ -8,11 +8,11 @@ const leaderboardRepository = {
 				player: {
 					select: {
 						id:           true,
-						username:     true,
+						companyName:     true,
 						email:        true,
-						money:        true,
+						coins:        true,
 						trustScore:   true,
-						subscribers:  true,
+						gems:         true,
 						companyValue: true,
 						company:      true   // include company so mapper can use company.name as outlet name
 					}
