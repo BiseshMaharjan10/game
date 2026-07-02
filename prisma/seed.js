@@ -561,9 +561,17 @@ async function upsertRows(model, rows) {
   }
 }
 
+const characterTemplates = [
+  { id: 'bob',        displayName: 'Bob',     skill: 'Data Entry',           description: 'Reliable junior level worker.',         influence: 10, timeliness: 40, accuracy: 60, category: 'junior', recruitCoins: 100, recruitGems: 20,   recurringCost: 50 },
+  { id: 'robin',      displayName: 'Robin',   skill: 'Strategic Planning',   description: 'Elite strategist with a sharp mind.',   influence: 80, timeliness: 70, accuracy: 75, category: 'elite',  recruitCoins: 500, recruitGems: 120, recurringCost: 200 },
+  { id: 'lisa',       displayName: 'Lisa',    skill: 'Market Analysis',      description: 'Expert analyst focusing on growth.',    influence: 70, timeliness: 85, accuracy: 90, category: 'junior', recruitCoins: 600, recruitGems: 150, recurringCost: 250 },
+  { id: 'michael',    displayName: 'Michael', skill: 'Project Management',   description: 'Seasoned leader for complex projects.', influence: 90, timeliness: 60, accuracy: 80, category: 'elite',  recruitCoins: 700, recruitGems: 180, recurringCost: 300 },
+];
+
 async function main() {
   await upsertRows('storyTemplate', storyTemplates);
   await upsertRows('event', [...storyEvents, ...nationalEvents]);
+  await upsertRows('characterTemplate', characterTemplates);
 
   await prisma.countryState.upsert({
     where: { key: 'global' },
