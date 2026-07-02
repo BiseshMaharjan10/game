@@ -22,54 +22,83 @@ enum EventStatus {
 }
 
 model Player {
-  id             String        @id @default(cuid())
-  firebaseUid    String?       @unique
+  id             String         @id @default(cuid())
+  firebaseUid    String?        @unique
   passwordHash   String?
-  username       String?       @unique
-  email          String        @unique
+  companyName    String?
+  email          String         @unique
   displayName    String?
   profilePicture String?
-  money          Int           @default(1000)
-  trustScore     Int           @default(50)
-  subscribers    Int           @default(0)
-  companyValue   Int           @default(1000)
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  coins          Int            @default(1000)
+  trustScore     Int            @default(0)
+  gems           Int            @default(100)
+  companyValue   Int            @default(1000)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
   company        Company?
   leaderboard    Leaderboard?
   state          PlayerState?
+  characters    PlayerCharacter[]
+  desks         Desk[]
   eventStates    PlayerEvent[]
   eventHistory   EventHistory[]
 }
 
 model Company {
-  id          String        @id @default(cuid())
-  ownerId     String        @unique
-  name        String
-  level               Int           @default(1)
-  reputation          Int           @default(50)
-  unlockedCharacters  String[]      @default([])
-  deskAssignments     Json          @default("{}")
-  createdAt           DateTime      @default(now())
-  updatedAt           DateTime      @updatedAt
-  owner               Player        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  journalists         Journalist[]
-  articles            Article[]
-  events              PlayerEvent[]
+  id                 String        @id @default(cuid())
+  ownerId            String        @unique
+  name               String
+  level              Int           @default(1)
+  reputation         Int           @default(50)
+  unlockedCharacters String[]      @default([])
+  deskAssignments    Json          @default("{}")
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  owner              Player        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  articles           Article[]
+  events             PlayerEvent[]
 }
 
-model Journalist {
-  id        String   @id @default(cuid())
-  companyId String
-  name      String
-  skill     Int      @default(1)
-  salary    Int      @default(100)
-  loyalty   Int      @default(50)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  company   Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+model CharacterTemplate {
+  id            String @id
+  displayName   String
+  skill         String @default("")
+  description   String @default("")
+  influence     Int    @default(0)
+  timeliness    Int    @default(0)
+  accuracy      Int    @default(0)
+  category      String @default("junior")
+  recruitCoins  Int    @default(0)
+  recruitGems   Int    @default(0)
+  recurringCost Int    @default(0)
+}
 
-  @@index([companyId])
+model Desk {
+  id                  String   @id @default(cuid())
+  playerId            String
+  deskIndex           Int
+  assignedCharacterId String?
+  unlocked            Boolean  @default(false)
+  cost                Int      @default(500)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  player              Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, deskIndex])
+  @@index([playerId])
+}
+
+model PlayerCharacter {
+  id          String   @id @default(cuid())
+  playerId    String
+  characterId String
+  quantity    Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  player      Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, characterId])
+  @@index([playerId])
 }
 
 model Article {
@@ -87,34 +116,34 @@ model Article {
 }
 
 model Event {
-  id           String        @id @default(cuid())
+  id           String         @id @default(cuid())
   title        String
   description  String
-  requiredTags String[]      @default([])
+  requiredTags String[]       @default([])
   conditions   Json
   choices      Json
-  repeatable   Boolean       @default(false)
+  repeatable   Boolean        @default(false)
   difficulty   Int
   reward       Int
   risk         Int
-  status       EventStatus   @default(available)
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  status       EventStatus    @default(available)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
   playerStates PlayerEvent[]
   history      EventHistory[]
 }
 
 model StoryTemplate {
-  id                   String         @id @default(cuid())
-  titleTemplate        String
-  descriptionTemplate  String
-  category             String
-  difficulty           Int
-  tags                 String[]       @default([])
-  variables            Json
-  createdAt            DateTime       @default(now())
-  updatedAt            DateTime       @updatedAt
-  instances            StoryInstance[]
+  id                  String          @id @default(cuid())
+  titleTemplate       String
+  descriptionTemplate String
+  category            String
+  difficulty          Int
+  tags                String[]        @default([])
+  variables           Json
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+  instances           StoryInstance[]
 }
 
 model StoryInstance {
@@ -134,40 +163,40 @@ model StoryInstance {
 }
 
 model PlayerState {
-  id                   String    @id @default(cuid())
-  playerId             String    @unique
-  money                Int       @default(1000)
-  reputation           Int       @default(50)
-  evidence             Int       @default(0)
+  id                    String   @id @default(cuid())
+  playerId              String   @unique
+  money                 Int      @default(1000)
+  reputation            Int      @default(50)
+  evidence              Int      @default(0)
   investigationProgress Int      @default(0)
-  journalists          String[]  @default([])
-  createdAt            DateTime  @default(now())
-  updatedAt            DateTime  @updatedAt
-  player               Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  journalists           String[] @default([])
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  player                Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
 }
 
 model CountryState {
-  id             String    @id @default(cuid())
-  key            String    @unique @default("global")
-  economy        Int       @default(50)
-  corruption     Int       @default(50)
-  stability      Int       @default(50)
-  publicTrust    Int       @default(50)
-  currentEvents  String[]  @default([])
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  id            String   @id @default(cuid())
+  key           String   @unique @default("global")
+  economy       Int      @default(50)
+  corruption    Int      @default(50)
+  stability     Int      @default(50)
+  publicTrust   Int      @default(50)
+  currentEvents String[] @default([])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model EventHistory {
-  id              String       @id @default(cuid())
+  id              String        @id @default(cuid())
   playerId        String
   storyInstanceId String
   eventId         String
   selectedChoice  Json
-  timestamp       DateTime     @default(now())
-  player          Player       @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  timestamp       DateTime      @default(now())
+  player          Player        @relation(fields: [playerId], references: [id], onDelete: Cascade)
   storyInstance   StoryInstance @relation(fields: [storyInstanceId], references: [id], onDelete: Cascade)
-  event           Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  event           Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
 
   @@index([playerId])
   @@index([storyInstanceId])
