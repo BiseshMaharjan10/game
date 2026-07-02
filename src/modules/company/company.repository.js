@@ -4,7 +4,7 @@ const companyRepository = {
 	findByOwnerId(ownerId) {
 		return prisma.company.findUnique({
 			where: { ownerId },
-			include: { journalists: true, articles: true, owner: true }
+			include: { articles: true, owner: true }
 		});
 	},
 	create(data) {
