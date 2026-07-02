@@ -331,11 +331,11 @@ async function getOrCreatePlayerState(playerId, playerRecord) {
   return storyRepository.upsertPlayerState(
     playerId,
     {
-      money: player.money,
+      money: player.coins,
       reputation: player.trustScore,
       evidence: 0,
       investigationProgress: 0,
-      journalists: player.company ? player.company.journalists.map((journalist) => journalist.name) : []
+      journalists: player.characters ? player.characters.map((pc) => pc.characterId) : []
     },
     {}
   );
@@ -435,7 +435,7 @@ async function resolveStoryChoice({ playerId, storyId, eventId, choiceIndex }) {
   });
 
   await playerRepository.update(playerId, {
-    money: nextPlayerState.money,
+    coins: nextPlayerState.money,
     trustScore: nextPlayerState.reputation
   });
 

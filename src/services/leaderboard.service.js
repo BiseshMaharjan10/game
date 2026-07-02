@@ -11,7 +11,7 @@ async function rebuildLeaderboard() {
       score: calculateLeaderboardScore({
         companyValue: player.companyValue,
         trustScore: player.trustScore,
-        subscribers: player.subscribers
+        subscribers: player.gems
       })
     }))
     .sort((left, right) => right.score - left.score)

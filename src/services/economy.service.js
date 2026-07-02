@@ -11,13 +11,13 @@ async function getEconomy(playerId) {
   const latestArticle = articles[0] || null;
   const salaryExpense = await totalSalaryExpense(playerId);
   const estimatedRevenue = calculateRevenue({
-    subscribers: player.subscribers,
+    subscribers: player.gems,
     articleQuality: latestArticle ? latestArticle.quality : 0,
     trustScore: player.trustScore
   });
 
   return {
-    money: player.money,
+    money: player.coins,
     estimatedRevenue,
     salaryExpense,
     companyValue: player.companyValue
@@ -29,13 +29,13 @@ async function getStats(playerId) {
   const company = await companyRepository.findByOwnerId(playerId);
 
   return {
-    money: player.money,
+    money: player.coins,
     trustScore: player.trustScore,
-    subscribers: player.subscribers,
+    subscribers: player.gems,
     companyValue: calculateCompanyValue({
-      money: player.money,
+      money: player.coins,
       trustScore: player.trustScore,
-      subscribers: player.subscribers,
+    subscribers: player.gems,
       level: company ? company.level : 1
     }),
     companyLevel: company ? company.level : 0,
