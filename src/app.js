@@ -17,6 +17,12 @@ const {
 } = require("./modules/leaderboard/leaderboard.routes");
 const { economyRouter } = require("./modules/economy/economy.routes");
 const { statsRouter } = require("./modules/economy/stats.routes");
+const { roomRouter } = require("./modules/room/room.routes");
+const { newsRouter } = require("./modules/news/news.routes");
+const { scenarioRouter } = require("./modules/scenario/scenario.routes");
+const { investigationRouter } = require("./modules/investigation/investigation.routes");
+const { matchRouter } = require("./modules/match/match.routes");
+const { debugRouter } = require("./modules/debug/debug.routes");
 const { errorHandler } = require("./middleware/errorHandler");
 const { requestLimiter } = require("./middleware/rateLimit");
 const { requestLogger } = require("./utils/logger");
@@ -44,6 +50,12 @@ function buildApp() {
   app.use("/leaderboard", leaderboardRouter);
   app.use("/economy", economyRouter);
   app.use("/stats", statsRouter);
+  app.use("/scenario", scenarioRouter);
+  app.use("/news", newsRouter);
+  app.use("/investigation", investigationRouter);
+  app.use("/match", matchRouter);
+  app.use("/rooms", roomRouter);
+  app.use("/debug", debugRouter);
 
   app.use(errorHandler);
 

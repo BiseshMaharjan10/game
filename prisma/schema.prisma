@@ -203,6 +203,56 @@ model EventHistory {
   @@index([eventId])
 }
 
+model NewsArticle {
+  id          String    @id @default(cuid())
+  roomId      Int
+  playerId    String
+  scenarioId  String
+  headline    String    @default("")
+  body        String?
+  status      String    @default("DRAFT")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+
+  @@unique([playerId, scenarioId])
+  @@index([roomId])
+  @@index([playerId])
+}
+
+model InvestigationSnapshot {
+  id                   String   @id @default(cuid())
+  articleId            String   @unique
+  playerId             String
+  scenarioId           String
+  headline             String   @default("")
+  anonymousTip         String   @default("")
+  backgroundNews       Json     @default("[]")
+  discoveredEvidence   Json     @default("[]")
+  witnessStatements    Json     @default("[]")
+  generatedArticleBody String?
+  createdAt            DateTime @default(now())
+
+  @@index([playerId])
+  @@index([scenarioId])
+}
+
+model Judgement {
+  id             String   @id @default(cuid())
+  articleId      String   @unique
+  scenarioId     String
+  playerId       String
+  roomId         Int
+  geminiAnalysis Json     @default("{}")
+  backendScore   Int      @default(0)
+  finalVerdict   String   @default("")
+  judgedAt       DateTime @default(now())
+
+  @@index([playerId])
+  @@index([scenarioId])
+  @@index([roomId])
+}
+
 model Leaderboard {
   id        String   @id @default(cuid())
   playerId  String   @unique
